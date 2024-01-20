@@ -1,0 +1,203 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, total={6.5in, 9.5in}]{geometry}
+\usepackage[portuguese]{babel}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{babel,arrows,positioning,chains,matrix,scopes,cd,quotes,calc,decorations.pathmorphing}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{algorithmic}
+\usepackage[portuguese, ruled, lined]{algorithm2e}
+\usepackage{setspace}
+\usepackage[T1]{fontenc}
+\usepackage{csquotes}
+\usepackage{pythonhighlight}
+\usepackage{algorithmic}
+\usepackage[portuguese, ruled, lined]{algorithm2e}
+
+%quiver
+\tikzset{curve/.style={settings={#1},to path={(\tikztostart)
+    .. controls ($(\tikztostart)!\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
+    and ($(\tikztostart)!1-\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
+    .. (\tikztotarget)\tikztonodes}},
+    settings/.code={\tikzset{quiver/.cd,#1}
+        \def\pv##1{\pgfkeysvalueof{/tikz/quiver/##1}}},
+    quiver/.cd,pos/.initial=0.35,height/.initial=0}
+
+% TikZ arrowhead/tail styles.
+\tikzset{tail reversed/.code={\pgfsetarrowsstart{tikzcd to}}}
+\tikzset{2tail/.code={\pgfsetarrowsstart{Implies[reversed]}}}
+\tikzset{2tail reversed/.code={\pgfsetarrowsstart{Implies}}}
+% TikZ arrow styles.
+\tikzset{no body/.style={/tikz/dash pattern=on 0 off 1mm}}
+
+\newtheorem{definition}{Definição}
+\newtheorem{proposition}[definition]{Proposição}
+\newtheorem{lemma}[definition]{Lema}
+\newtheorem{axiom}[definition]{Axioma}
+\newtheorem{corollary}[definition]{Corolário}
+\newtheorem{theorem}[definition]{Teorema}
+\newtheorem{distribution}[definition]{Distribuição}
+\newtheorem{example}[definition]{Exemplo}
+
+\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\blue}[1]{{\color{blue} #1}}
+
+\DeclareMathOperator{\freeab}{Free_{Ab}}
+\DeclareMathOperator{\Top}{Top}
+\DeclareMathOperator{\Ab}{Ab}
+\DeclareMathOperator{\Grp}{Grp}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\module}{Mod}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\chain}{Ch}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Exp}{Exp}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\Ricci}{Ricci}
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\gyr}{gyr}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\Log}{Log}
+\DeclareMathOperator{\ArithmeticMod}{mod}
+
+\renewcommand{\phi}{\varphi}
+
+\newcommand{\modulus}[1]{\phantom{.}(\ArithmeticMod\phantom{.}#1)}
+
+\newcommand{\Mod}[1]{$\module_{#1}$}
+\newcommand{\Chain}[1]{$\chain(#1)$}
+
+\newcommand{\openset}[0]{{\phantom{}\subset}{\circ}\phantom{.}}
+
+\def\arrvline{\hfil\kern\arraycolsep\vline\kern-\arraycolsep\hfilneg}
+
+\title{Qualificação de Mestrado}
+\author{Lucas Giraldi Almeida Coimbra}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Álgebra Linear}
+
+\subsection{Espaços Vetoriais e Formas Bilineares}
+
+Tome $\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$. Um \textbf{espaço vetorial} é um conjunto $V$ munido de duas operações \begin{equation}
+    \begin{split}
+        + \colon V \times V &\to V \\ (x,y) &\mapsto x + y
+    \end{split} \quad \text{e} \quad \begin{split}
+        \cdot \colon \mathbb{K} \times V &\to V \\ (\lambda,x) &\mapsto \lambda x
+    \end{split}
+\end{equation} tais que a operação $+$ (soma) é comutativa, associativa, possui identidade e todos os inversos, e a operação de $\cdot$ (produto por escalar) satisfaz as relações distributivas, $1x = x$ e $\lambda(\mu x) = (\lambda\mu)x$.
+
+Dizemos que $x_1, \dots, x_n \in V$ são \textbf{linearmente independentes} se para quaisquer $\lambda^1, \dots, \lambda^n \in \mathbb{K}$ tais que \begin{equation}
+    \lambda^i x_i = 0,
+\end{equation} então $\lambda_i = 0$ para todo $i$. Vetores que não são linearmente independentes são \textbf{linearmente dependentes}. Se \begin{equation}
+    v = \lambda^ix_i,
+\end{equation} dizemos que $v$ é uma \textbf{combinação linear} de $x_1, \dots, x_n$. Fica claro da definição que um conjunto de vetores é linearmente dependente se, e somente se, um dos vetores pode ser escrito como combinação linear dos outros. Além disso, é fácil ver que se uma subcoleção de vetores é linearmente dependente, então a coleção original também é. Mais ainda, qualquer coleção de vetores que contenha o $0$ é linearmente dependente.
+
+Um espaço vetorial $V$ é dito \textbf{$n$-dimensional} se possui um conjunto de $n$ vetores linearmente independentes, e qualquer conjunto de $n+1$ vetores forem linearmente dependentes. Se existirem conjuntos linearmente independentes de tamanho arbitrariamente grande, dizemos que $V$ possui \textbf{dimensão infinita}. Nessas notas focaremos em espaços de dimensão finita. Se $V$ é $n$-dimensional, denotamos $\dim V = n$.
+
+Seja $V$ espaço vetorial com $\dim V = n$. Um conjunto de $n$ vetores linearmente independentes é chamado de \textbf{base} de $V$.
+
+\begin{theorem}
+    Fixada uma base para $V$, todo vetor se escreve unicamente como combinação linear desta base.
+\end{theorem}
+\begin{proof}
+    Sejam $x \in V$ e $e_1, \dots, e_n \in V$ uma base. Como $x, e_1, \dots, e_n$ são $n+1$ vetores distintos, são necessariamente linearmente dependentes, portanto podemos escrever \begin{equation}
+        \lambda x + \lambda^ie_i = 0
+    \end{equation} para $\lambda \neq 0$ (afinal, se pudessemos tomar $\lambda = 0$, os vetores da base seriam linearmente dependentes, o que é um absurdo). Dessa forma, temos \begin{equation}
+        x = -\frac{1}{\lambda}\lambda^ie_i.
+    \end{equation} Para a unicidade, se $\lambda^ie_i$ e $\mu^ie_i$ são duas representações de $x$ na base, então \begin{equation}
+        \lambda^ie_i = \mu^ie_i \implies (\lambda^i - \mu^i)e_i = 0 \implies \lambda^i - \mu^i = 0 \implies \lambda^i = \mu^i,
+    \end{equation} pela independência linear da base.
+\end{proof}
+
+Se $e = (e_1, \dots, e_n)$ é uma base de $V$ e $x = \lambda^ie_i$, dizemos que $x[e] = (\lambda^1, \dots, \lambda^n)$ são as \textbf{coordenadas de $x$ na base $e_1, \dots, e_n$}.
+
+Se $V$ e $W$ são espaços vetoriais, uma \textbf{transformação linear} ou um \textbf{morfismo} entre $V$ e $W$ é uma função $\phi \colon V \to W$ tal que $\phi(x + y) = \phi(x) + \phi(y)$ e $\phi(\lambda x) = \lambda \phi(x)$. Note que o corpo $\mathbb{K}$ sobre o qual os espaços $V$ e $W$ são definidos deve ser o mesmo pra que a segunda condição faça sentido. Se $\phi$ for uma bijeção, diremos que é um \textbf{isomorfismo linear} e, nesse caso, que $V$ e $W$ são \textbf{isomorfos}. 
+
+\begin{proposition}
+    Transformações lineares preservam dependência linear, e transformações lineares injetoras preservam independência linear.
+\end{proposition}
+\begin{proof}
+    Se $\phi \colon V \to W$ é linear, sejam $x_1, \dots, x_n \in V$ linearmente dependentes. Então existem $\lambda^1, \dots, \lambda^n \in \mathbb{K}$ não todos nulos tais que $\lambda^i x_i = 0$. Porém, como $\phi(0) = 0$, então \begin{equation}
+        \lambda^i x_i = 0 \implies \lambda^i \phi(x_i) = 0,
+    \end{equation} portanto os vetores $\phi(x_i)$ são linearmente dependentes.
+
+    Se $\phi$ for injetora, então se $x_1, \dots, x_n \in V$ são linearmente independentes, considere a combinação linear $\lambda^i \phi(x_i) = 0$. Isso é o mesmo que dizer que $\phi(\lambda^i x_i) = 0$ e, como $\phi$ é injetora e $\phi(0) = 0$, então $\lambda^i x_i = 0$, assim $\lambda^i = 0$ para todo $i$, portanto os vetores $\phi(x_i)$ são linearmente independentes.
+\end{proof}
+
+\begin{proposition}
+    Isomorfismos preservam dimensão.
+\end{proposition}
+\begin{proof}
+    Se $\phi \colon V \to W$ é um isomorfismo, vamos mostrar que $\dim V = \dim W$. Seja $n = \dim V$. Seja $x_1, \dots, x_n$ uma base em $V$. Como $\phi$ é injetor, então $\phi(x_1), \dots, \phi(x_n)$ são linearmente independentes. Agora, se $y_1, \dots, y_{n+1} \in W$ são distintos, então $\phi^{-1}(y_1), \dots, \phi^{-1}(y_{n+1})$ são distintos e portanto linearmente dependentes, da onde segue que os vetores $y_i$ também são, visto que $y_i = \phi(\phi^{-1}(y_i))$. Assim, $\dim W = n = \dim V$.
+\end{proof}
+
+Um \textbf{subespaço vetorial} de um espaço vetorial $V$ é um subconjunto $S \subset V$ tal que para todos $x, y \in S$ e $\lambda \in \mathbb{K}$, temos $x + y \in S$ e $\lambda x \in S$. Todo espaço vetorial é um subespaço vetorial de si mesmo, assim como $\{0\}$ é sempre um subespaço vetorial.
+
+\begin{proposition}
+    A dimensão de um subespaço vetorial é, no máximo, a dimensão do espaço.
+\end{proposition}
+\begin{proof}
+    Seja $V$ um espaço vetorial e $S$ um subespaço de $V$. Se $m = \dim S > \dim V = n$, então existem $x_1, \dots, x_m \in S$ linearmente independentes em $S$, porém, a inclusão $S \to V$ é linear e injetora, então $x_1, \dots, x_m$ também são linearmente independentes em $V$, o que é um absurdo pois $m > n$.
+\end{proof}
+
+Se $S \subset V$ é um subconjunto qualquer, denotamos por $\langle S \rangle$ o \textbf{subespaço vetorial gerado por $S$}, que é o conjunto de todas as combinações lineares de elementos de $S$ (combinações lineares são sempre somas finitas). Se $S$ é linearmente independente, então $\dim \langle S \rangle = |S|$ e $S$ é uma base para $\langle S \rangle$.
+
+Se $X$ é um conjunto, denotamos por $S_X$ o conjunto de todas as bijeções $X \to X$, e se $X = \{1, \dots, n\}$, denotamos $S_X = S_n$. Uma \textbf{transposição} em $S_n$ é uma bijeção da forma $\sigma(i) = i+1$, $\sigma(i+1) = i$ e que fixa todos os outros elementos. Uma bijeção $\sigma \in S_n$ é \textbf{par} se é a composição de um número par de transposições, e é \textbf{ímpar} se é a composição de um número ímpar de transposições. Definimos o \textbf{sinal} de $\sigma$ por \begin{equation}
+    (-1)^\sigma = \begin{cases}
+        1, &\text{se } \sigma \text{ é par}, \\
+        -1, &\text{se } \sigma \text{ é  ímpar}.
+    \end{cases}
+\end{equation}
+
+
+Se $A = [a^i_j]_{n \times n}$ é uma matriz, seu \textbf{determinante} é o número \begin{equation}
+    \det A = \sum_{\sigma \in S_n} (-1)^\sigma a^1_{\sigma(1)} \cdots a^n_{\sigma(n)}.
+\end{equation}
+Dadas duas bases $e = (e_1, \dots, e_n)$ e $f = (f_1, \dots, f_n)$ de $V$, podemos escrever unicamente cada $e_j$ como \begin{equation}\label{eq10}
+    e_j = a^i_j f_i
+\end{equation} e fica claro que o determinante da matriz $A = [a^i_j]$ é não nulo, caso contrário os vetores $e_j$ seriam linearmente dependentes. Se $x[e] = (\lambda^1, \dots, \lambda^n)$ e $x[f] = (\mu^1, \dots, \mu^n)$, então sabemos que $\lambda^j e_j = \mu^i f_i$ e portanto \begin{equation}
+    \mu^i f_i = \lambda^j a^i_j f_i.
+\end{equation} Como os vetores $f_i$ são linearmente independentes, segue que $\mu^i = a^i_j \lambda^j$. Dessa forma, temos que $x[e] = A x[f]$, portanto $x[f] = A^{-1} x[e]$, ou seja, \textit{a troca de coordenadas de $x$ da base $e$ para base $f$ é dada pela matriz inversa da matriz que troca a base $f$ para a base $e$} (como vimos em \ref{eq10}). Podemos abreviar essa frase dizendo que vetores são \textbf{quantidades contravariantes}, no sentido de que eles mudam de coordenadas de maneira inversa a uma mudança de base. Em particular, é por isso que sempre denotamos os índices de vetores embaixo. Para \textbf{quantidades covariantes}, os índices são denotados em cima (números não obedecem essa regra e seus índices são posicionados de maneira a obedecer a notação de soma de Einstein).
+
+\section{Grupos}
+\section{Anéis}
+\section{Corpos}
+\section{Métricos}
+\section{Análise 1}
+\section{Análise 2}
+\section{Análise Complexa}
+\section{Medida}
+\section{Funcional}
+\section{EDO}
+\section{EDP}
+\section{Probabilidade}
+\section{Topologia}
+\section{Topologia Algébrica}
+\section{Topologia Diferencial}
+\section{Análise em Variedades}
+\section{Riemanniana}
+
+\end{document}
