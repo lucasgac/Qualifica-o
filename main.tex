@@ -99,7 +99,7 @@
 
 \section{Álgebra Linear}
 
-\subsection{Espaços Vetoriais e Formas Bilineares}
+\subsection{Fundamentos e Dualidade}
 
 Tome $\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$. Um \textbf{espaço vetorial} é um conjunto $V$ munido de duas operações \begin{equation}
     \begin{split}
@@ -109,73 +109,77 @@ Tome $\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$. Um \textbf{espaço vetorial} é 
     \end{split}
 \end{equation} tais que a operação $+$ (soma) é comutativa, associativa, possui identidade e todos os inversos, e a operação de $\cdot$ (produto por escalar) satisfaz as relações distributivas, $1x = x$ e $\lambda(\mu x) = (\lambda\mu)x$.
 
+Um \textbf{subespaço vetorial} de um espaço vetorial $V$ é um subconjunto $S \subset V$ tal que para todos $x, y \in S$ e $\lambda \in \mathbb{K}$, temos $x + y \in S$ e $\lambda x \in S$. Todo espaço vetorial é um subespaço vetorial de si mesmo, assim como $\{0\}$ é sempre um subespaço vetorial. Chamamos $V$ e $\{0\}$ de \textbf{subespaços triviais}. Se $U, W \subset V$ são dois subespaços, então o conjunto $U + V = \{u + w \mid u \in U, w \in W\}$ é a \textbf{soma} desses subespaços, e é também um subespaço. Se $U \cap W = \{0\}$, então diremos que a soma desses espaços é uma \textbf{soma direta} e a denotamos por $U \oplus W$. A intersecção $U \cap W$ também é sempre um subespaço vetorial.
+
+Uma \textbf{combinação linear} de vetores em $V$ é uma soma finita \begin{equation}
+    \lambda^i x_i = 0
+\end{equation} onde cada $\lambda^i \in \mathbb{K}$. Dado um conjunto $S \subset V$, o conjunto $\langle S \rangle$ de todas as combinações lineares de elementos de $S$ é um subespaço vetorial de $V$, chamado de \textbf{subespaço gerado por $S$}. O conjunto $S$ é \textbf{gerador} de $V$ se $\langle S \rangle = V$.
+
 Dizemos que $x_1, \dots, x_n \in V$ são \textbf{linearmente independentes} se para quaisquer $\lambda^1, \dots, \lambda^n \in \mathbb{K}$ tais que \begin{equation}
     \lambda^i x_i = 0,
-\end{equation} então $\lambda_i = 0$ para todo $i$. Vetores que não são linearmente independentes são \textbf{linearmente dependentes}. Se \begin{equation}
-    v = \lambda^ix_i,
-\end{equation} dizemos que $v$ é uma \textbf{combinação linear} de $x_1, \dots, x_n$. Fica claro da definição que um conjunto de vetores é linearmente dependente se, e somente se, um dos vetores pode ser escrito como combinação linear dos outros. Além disso, é fácil ver que se uma subcoleção de vetores é linearmente dependente, então a coleção original também é. Mais ainda, qualquer coleção de vetores que contenha o $0$ é linearmente dependente.
+\end{equation} então $\lambda_i = 0$ para todo $i$. Vetores que não são linearmente independentes são \textbf{linearmente dependentes}. Fica claro da definição que um conjunto de vetores é linearmente dependente se, e somente se, um dos vetores pode ser escrito como combinação linear dos outros. Além disso, é fácil ver que se uma subcoleção de vetores é linearmente dependente, então a coleção original também é. Mais ainda, qualquer coleção de vetores que contenha o $0$ é linearmente dependente.
 
-Um espaço vetorial $V$ é dito \textbf{$n$-dimensional} se possui um conjunto de $n$ vetores linearmente independentes, e qualquer conjunto de $n+1$ vetores forem linearmente dependentes. Se existirem conjuntos linearmente independentes de tamanho arbitrariamente grande, dizemos que $V$ possui \textbf{dimensão infinita}. Nessas notas focaremos em espaços de dimensão finita. Se $V$ é $n$-dimensional, denotamos $\dim V = n$.
+\begin{lemma}\label{lemma1}
+    Sejam $S = \{s_1, \dots, s_n\}$ um gerador de $V$ e $v_1, \dots, v_m$ vetores linearmente independentes. Então, $m \leq n$.
+\end{lemma}
+\begin{proof}
+    Suponha que $m > n$. Como $S$ gera $V$, então existem $\lambda^1, \dots, \lambda^n$ tais que $y_1 = \lambda^i s_i$. Como $y_1 \neq 0$ (pela independência linear), então algum $\lambda_j$ é não nulo, ou seja, podemos substituir $s_j$ por $y_1$ e o conjunto resultante ainda gera $V$. Pela independência linear dos $y_i$, podemos fazer essa operação mais $n-1$ vezes, garantindo que $y_1, \dots, y_n$ geram $V$. Porém, isso significa que $y_{n+1}, \dots, y_m$ são combinação linear de $y_1, \dots, y_n$, o que contradiz a independência linear. Segue então que $m \leq n$.
+\end{proof}
 
-Seja $V$ espaço vetorial com $\dim V = n$. Um conjunto de $n$ vetores linearmente independentes é chamado de \textbf{base} de $V$.
+Um espaço $V$ é \textbf{finitamente gerado} se existe um conjunto gerador finito. Uma \textbf{base} de $V$ é um conjunto gerador linearmente independente.
+
+\begin{lemma}\label{lemma2}
+    Todo espaço finitamente gerado possui uma base.
+\end{lemma}
+\begin{proof}
+    Se $S = \{s_1, \dots, s_n\}$ gera $V$, então se $S$ é linearmente independente o trabalho acabou. Caso contrário, algum $s_i$ é combinação linear dos outros, e então retiramos ele e o conjunto resultante ainda gera $V$. Fazemos isso até que os vetores que sobram em $S$ sejam linearmente independentes, e assim temos uma base.
+\end{proof}
+
+A partir de agora vamos trabalhar apenas com espaços finitamente gerados e, caso queiramos falar em um contexto mais geral, iremos explicitar. A \textbf{dimensão} de um espaço $V$, denotada por $\dim V$, é o número de elementos de uma base. Pelo Teorema a seguir, esse número está bem definido.
 
 \begin{theorem}
-    Fixada uma base para $V$, todo vetor se escreve unicamente como combinação linear desta base.
+    Toda base possui mesmo número de elementos.
 \end{theorem}
 \begin{proof}
-    Sejam $x \in V$ e $e_1, \dots, e_n \in V$ uma base. Como $x, e_1, \dots, e_n$ são $n+1$ vetores distintos, são necessariamente linearmente dependentes, portanto podemos escrever \begin{equation}
-        \lambda x + \lambda^ie_i = 0
-    \end{equation} para $\lambda \neq 0$ (afinal, se pudessemos tomar $\lambda = 0$, os vetores da base seriam linearmente dependentes, o que é um absurdo). Dessa forma, temos \begin{equation}
-        x = -\frac{1}{\lambda}\lambda^ie_i.
-    \end{equation} Para a unicidade, se $\lambda^ie_i$ e $\mu^ie_i$ são duas representações de $x$ na base, então \begin{equation}
-        \lambda^ie_i = \mu^ie_i \implies (\lambda^i - \mu^i)e_i = 0 \implies \lambda^i - \mu^i = 0 \implies \lambda^i = \mu^i,
-    \end{equation} pela independência linear da base.
+    Como bases são linearmente independentes e geradoras, o resultado segue facilmente do Lema \ref{lemma1}.
 \end{proof}
 
-Se $e = (e_1, \dots, e_n)$ é uma base de $V$ e $x = \lambda^ie_i$, dizemos que $x[e] = (\lambda^1, \dots, \lambda^n)$ são as \textbf{coordenadas de $x$ na base $e_1, \dots, e_n$}.
+O \ref{lemma2} assume implicitamente que o conjunto $S$ que gera $V$ é não vazio. Caso tenhamos $V = \langle\varnothing\rangle$, então $V = \{0\}$ e o chamamos de \textbf{espaço trivial}. Sua dimensão é, por definição, nula.
 
-Se $V$ e $W$ são espaços vetoriais, uma \textbf{transformação linear} ou um \textbf{morfismo} entre $V$ e $W$ é uma função $\phi \colon V \to W$ tal que $\phi(x + y) = \phi(x) + \phi(y)$ e $\phi(\lambda x) = \lambda \phi(x)$. Note que o corpo $\mathbb{K}$ sobre o qual os espaços $V$ e $W$ são definidos deve ser o mesmo pra que a segunda condição faça sentido. Se $\phi$ for uma bijeção, diremos que é um \textbf{isomorfismo linear} e, nesse caso, que $V$ e $W$ são \textbf{isomorfos}. 
-
-\begin{proposition}
-    Transformações lineares preservam dependência linear, e transformações lineares injetoras preservam independência linear.
-\end{proposition}
+\begin{theorem}
+    Todo conjunto linearmente independente pode ser estendido para uma base.
+\end{theorem}
 \begin{proof}
-    Se $\phi \colon V \to W$ é linear, sejam $x_1, \dots, x_n \in V$ linearmente dependentes. Então existem $\lambda^1, \dots, \lambda^n \in \mathbb{K}$ não todos nulos tais que $\lambda^i x_i = 0$. Porém, como $\phi(0) = 0$, então \begin{equation}
-        \lambda^i x_i = 0 \implies \lambda^i \phi(x_i) = 0,
-    \end{equation} portanto os vetores $\phi(x_i)$ são linearmente dependentes.
-
-    Se $\phi$ for injetora, então se $x_1, \dots, x_n \in V$ são linearmente independentes, considere a combinação linear $\lambda^i \phi(x_i) = 0$. Isso é o mesmo que dizer que $\phi(\lambda^i x_i) = 0$ e, como $\phi$ é injetora e $\phi(0) = 0$, então $\lambda^i x_i = 0$, assim $\lambda^i = 0$ para todo $i$, portanto os vetores $\phi(x_i)$ são linearmente independentes.
+    Se $S$ é um conjunto linearmente independente, então considere $\langle S \rangle$. Se $\langle S \rangle = V$, então o conjunto $S$ já é uma base. Caso contrário, seja $v \in V \setminus \langle S \rangle$ e tome $S_1 = S \cup \{v\}$. Podemos agora testar se $\langle S_1 \rangle = V$ e, caso contrário, repetir o processo. Como o espaço $V$ é finitamente gerado, esse processo obrigatoriamente acaba, que é quando adicionamos vetores o suficiente em $S$ para que se torne uma base.
 \end{proof}
 
-\begin{proposition}
-    Isomorfismos preservam dimensão.
-\end{proposition}
+Note que todo subespaço de um espaço com dimensão finita, possui dimensão finita (pelo Lema \ref{lemma1}). Se $W$ é um subespaço de $V$, um subespaço $U$ de $V$ é um \textbf{complemento} de $W$ se $U \oplus W = V$.
+
+\begin{theorem}
+    Complementos sempre existem e são únicos.
+\end{theorem}
 \begin{proof}
-    Se $\phi \colon V \to W$ é um isomorfismo, vamos mostrar que $\dim V = \dim W$. Seja $n = \dim V$. Seja $x_1, \dots, x_n$ uma base em $V$. Como $\phi$ é injetor, então $\phi(x_1), \dots, \phi(x_n)$ são linearmente independentes. Agora, se $y_1, \dots, y_{n+1} \in W$ são distintos, então $\phi^{-1}(y_1), \dots, \phi^{-1}(y_{n+1})$ são distintos e portanto linearmente dependentes, da onde segue que os vetores $y_i$ também são, visto que $y_i = \phi(\phi^{-1}(y_i))$. Assim, $\dim W = n = \dim V$.
+    Se $W$ é um subespaço, seja $v_1, \dots, v_m$ uma base de $W$ e a complete para uma base $v_1, \dots, v_m, \\w_1, \dots, w_n$ de $V$. Defina $U = \langle w_1, \dots, w_n \rangle$. Se $x \in U \cap W$, então existem $\lambda^1, \dots, \lambda^m$ e $\mu^1, \dots, \mu^n$ em $\mathbb{K}$ tais que \begin{equation}
+        x = \lambda^i v_i = \mu^j w_j,
+    \end{equation}
+    ou seja, $\lambda^i v_i + \mu^j v_j = 0$, portanto cada $\lambda^i$ e $\mu^j$ é nulo, da onde segue que $x = 0$ e assim $U \cap W = \{0\}$. Mais ainda, se $x \in V$, então podemos escrever $x = \lambda^i v_i + \mu^j w_j$ e assim $x = v + w$ com $v \in U$ e $w \in W$, da onde segue que $V = U \oplus W$.
 \end{proof}
 
-Um \textbf{subespaço vetorial} de um espaço vetorial $V$ é um subconjunto $S \subset V$ tal que para todos $x, y \in S$ e $\lambda \in \mathbb{K}$, temos $x + y \in S$ e $\lambda x \in S$. Todo espaço vetorial é um subespaço vetorial de si mesmo, assim como $\{0\}$ é sempre um subespaço vetorial.
-
-\begin{proposition}
-    A dimensão de um subespaço vetorial é, no máximo, a dimensão do espaço.
-\end{proposition}
-\begin{proof}
-    Seja $V$ um espaço vetorial e $S$ um subespaço de $V$. Se $m = \dim S > \dim V = n$, então existem $x_1, \dots, x_m \in S$ linearmente independentes em $S$, porém, a inclusão $S \to V$ é linear e injetora, então $x_1, \dots, x_m$ também são linearmente independentes em $V$, o que é um absurdo pois $m > n$.
-\end{proof}
-
-Se $S \subset V$ é um subconjunto qualquer, denotamos por $\langle S \rangle$ o \textbf{subespaço vetorial gerado por $S$}, que é o conjunto de todas as combinações lineares de elementos de $S$ (combinações lineares são sempre somas finitas). Se $S$ é linearmente independente, então $\dim \langle S \rangle = |S|$ e $S$ é uma base para $\langle S \rangle$.
-
-Se $X$ é um conjunto, denotamos por $S_X$ o conjunto de todas as bijeções $X \to X$, e se $X = \{1, \dots, n\}$, denotamos $S_X = S_n$. Uma \textbf{transposição} em $S_n$ é uma bijeção da forma $\sigma(i) = i+1$, $\sigma(i+1) = i$ e que fixa todos os outros elementos. Uma bijeção $\sigma \in S_n$ é \textbf{par} se é a composição de um número par de transposições, e é \textbf{ímpar} se é a composição de um número ímpar de transposições. Definimos o \textbf{sinal} de $\sigma$ por \begin{equation}
-    (-1)^\sigma = \begin{cases}
-        1, &\text{se } \sigma \text{ é par}, \\
-        -1, &\text{se } \sigma \text{ é  ímpar}.
-    \end{cases}
+Note que da demonstração acima tiramos um outro fato importante: se $V = U \oplus W$, então $\dim V = \dim U + \dim W$. Esse fato pode ser generalizado, isso é, se $V = V_1 + \cdots + V_n$ e $V_i \cap V_j = \{0\}$ quando $i \neq j$, então escrevemos \begin{equation}
+    V = V_1 \oplus \cdots \oplus V_n = \bigoplus_{i = 1}^n V_i
+\end{equation} e nesse caso temos \begin{equation}
+    \dim V = \sum_{i = 1}^n \dim V_i.
 \end{equation}
 
+\begin{proposition}
+    Se $V = V_1 \oplus \cdots \oplus V_n$ e $x \in V$, então existem $x_i \in V_i$ únicos tais que $x = x_1 + \cdots + x_n$.
+\end{proposition}
+\begin{proof}
+    Como já observamos, se $v_i^j$ é uma base de $V_j$, então podemos escrever $x = \lambda_j^i v_i^j$ e assim tomamos $x_j = \lambda^i v_i^j$
+\end{proof}
 
-Se $A = [a^i_j]_{n \times n}$ é uma matriz, seu \textbf{determinante} é o número \begin{equation}
-    \det A = \sum_{\sigma \in S_n} (-1)^\sigma a^1_{\sigma(1)} \cdots a^n_{\sigma(n)}.
-\end{equation}
+----------------------------
+
 Dadas duas bases $e = (e_1, \dots, e_n)$ e $f = (f_1, \dots, f_n)$ de $V$, podemos escrever unicamente cada $e_j$ como \begin{equation}\label{eq10}
     e_j = a^i_j f_i
 \end{equation} e fica claro que o determinante da matriz $A = [a^i_j]$ é não nulo, caso contrário os vetores $e_j$ seriam linearmente dependentes. Se $x[e] = (\lambda^1, \dots, \lambda^n)$ e $x[f] = (\mu^1, \dots, \mu^n)$, então sabemos que $\lambda^j e_j = \mu^i f_i$ e portanto \begin{equation}

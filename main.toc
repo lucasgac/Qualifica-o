@@ -1,6 +1,6 @@
 \babel@toc {portuguese}{}\relax 
 \contentsline {section}{\numberline {1}Álgebra Linear}{1}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Espaços Vetoriais e Formas Bilineares}{1}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.1}Fundamentos e Dualidade}{1}{subsection.1.1}%
 \contentsline {section}{\numberline {2}Grupos}{4}{section.2}%
 \contentsline {section}{\numberline {3}Anéis}{4}{section.3}%
 \contentsline {section}{\numberline {4}Corpos}{4}{section.4}%

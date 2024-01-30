@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1705776892 "c:/Users/Administrator/Desktop/Qualificação/main.tex" "main.pdf" "main" 1705776894 0
+["pdflatex"] 1706129264 "c:/Users/Administrator/Desktop/Qualificação/main.tex" "main.pdf" "main" 1706129267 0
   "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/ecbx1000.tfm" 993061956 3200 328792ff19833a39406f06fa0555a6dc ""
   "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/ecbx1200.tfm" 993061958 3200 b8d69bc738e5ef3e08cefeef3109ff56 ""
   "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/ecbx1440.tfm" 993061960 3196 0b37fa3083e15c57cfa8c4ff52f2807a ""
@@ -30,7 +30,6 @@
   "C:/Program Files/MiKTeX/fonts/tfm/public/cm/cmsy8.tfm" 1136765053 1120 8b7d695260f3cff42e636090a8002094 ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1247596667 30251 6afa5cb1d0204815a708a080681d4674 ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1247596667 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
-  "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb" 1247596667 37912 07513ec114ac737ab54cea0152f4424b ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1247596667 36281 c355509802a035cadc5f15869451dcee ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1247596667 32762 7fee39e011c23b3589931effd97b9702 ""
@@ -207,11 +206,11 @@
   "C:/Users/Administrator/AppData/Roaming/MiKTeX/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1657800696 9714 ba3194bd52c8499b3f1e3eb91d409670 ""
   "C:/Users/Administrator/AppData/Roaming/MiKTeX/tex/latex/setspace/setspace.sty" 1670403145 22490 8cac309b79a4c53a4ffce4b1b07aead0 ""
   "C:/Users/Administrator/AppData/Roaming/MiKTeX/tex/latex/tikz-cd/tikzlibrarycd.code.tex" 1620478817 23059 b4b98da760150611227e2533f15fe352 ""
-  "c:/Users/Administrator/Desktop/Qualificação/main.tex" 1705776891 12516 9e4aefb12a5be3a5fc3be6ba4662e0e1 ""
-  "main.aux" 1705776894 2881 78188e2a2c77ab67b6521f5a3970aa4d "pdflatex"
-  "main.out" 1705776894 2038 978e759b52c17a97e9eafef94e35617a "pdflatex"
-  "main.tex" 1705776891 12516 9e4aefb12a5be3a5fc3be6ba4662e0e1 ""
-  "main.toc" 1705776894 1359 642c86432b6e98241585d68985deeb7b "pdflatex"
+  "c:/Users/Administrator/Desktop/Qualificação/main.tex" 1706129263 12309 0497e36981f6334768cf2876a248492b ""
+  "main.aux" 1706129267 2937 e55bd5dc8fe4de35296570e50b9cf1a4 "pdflatex"
+  "main.out" 1706129267 1959 1a5213a5f913465ecb803ffc07880762 "pdflatex"
+  "main.tex" 1706129263 12309 0497e36981f6334768cf2876a248492b ""
+  "main.toc" 1706129267 1344 50caac499316ab3b9530fa0245466a68 "pdflatex"
   (generated)
   "main.aux"
   "main.log"
