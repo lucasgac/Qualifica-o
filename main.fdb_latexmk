@@ -1,6 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1707921941.55669 "/home/lucasgac/Documents/GitHub/Qualifica-o/main.tex" "main.pdf" "main" 1707921944.23294 0
+["pdflatex"] 1709669412.48207 "/home/lucasgac/Documents/GitHub/Qualifica-o/main.tex" "main.pdf" "main" 1709669413.75371 0
   "/home/lucasgac/.miktex/texmfs/data/fonts/map/pdftex/pdftex.map" 1706886488.03264 28976 a668fbfa557ad281755924e73ca8348e ""
+  "/home/lucasgac/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecbi1000.pk" 1707283471.19037 34112 a42207739cc18b330f05dc9a5123c492 ""
   "/home/lucasgac/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1000.pk" 1706634469.66657 25420 8144bdc16088c7a17172cbf620893a49 ""
   "/home/lucasgac/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1200.pk" 1706634467.56253 31952 56e304d4b5d0c6e5faf13682c1b9f01e ""
   "/home/lucasgac/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1440.pk" 1706634470.72659 40136 72c8e7a2a2294d5356baf66db50344e2 ""
@@ -10,6 +11,7 @@
   "/home/lucasgac/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecti1000.pk" 1706634466.4505 31892 45e7c1c751e6b1f502d4dc51ceb795e6 ""
   "/home/lucasgac/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1706729111.85547 11548 728aa05c512297d2b49a7bd772efd21d ""
   "/home/lucasgac/.miktex/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1706634364.07632 21032031 05c6e4a91a0d38a3bb50e86d5f38df9c ""
+  "/home/lucasgac/.miktex/texmfs/install/fonts/tfm/jknappen/ec/ecbi1000.tfm" 1706634442.49798 2900 ce550da2a8b866861d2ce2b29bee03eb ""
   "/home/lucasgac/.miktex/texmfs/install/fonts/tfm/jknappen/ec/ecbx1000.tfm" 1706634442.50198 3200 328792ff19833a39406f06fa0555a6dc ""
   "/home/lucasgac/.miktex/texmfs/install/fonts/tfm/jknappen/ec/ecbx1200.tfm" 1706634442.50198 3200 b8d69bc738e5ef3e08cefeef3109ff56 ""
   "/home/lucasgac/.miktex/texmfs/install/fonts/tfm/jknappen/ec/ecbx1440.tfm" 1706634442.50198 3196 0b37fa3083e15c57cfa8c4ff52f2807a ""
@@ -52,6 +54,7 @@
   "/home/lucasgac/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy5.pfb" 1706634415.2854 32915 7bf7720c61a5b3a7ff25b0964421c9b6 ""
   "/home/lucasgac/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1706634415.2894 32716 08e384dc442464e7285e891af9f45947 ""
   "/home/lucasgac/.miktex/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1706634415.4134 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
+  "/home/lucasgac/.miktex/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm7.pfb" 1706634415.4214 35309 940e81a5b9e04201a07e8b33a3ae6e64 ""
   "/home/lucasgac/.miktex/texmfs/install/tex/context/base/mkii/supp-pdf.mkii" 1706634450.35415 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/home/lucasgac/.miktex/texmfs/install/tex/generic/atbegshi/atbegshi.sty" 1706634356.01216 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "/home/lucasgac/.miktex/texmfs/install/tex/generic/babel/babel.sty" 1706634359.78023 150008 7a05b0fdc0167c04e192003e780ab195 ""
@@ -210,11 +213,13 @@
   "/home/lucasgac/.miktex/texmfs/install/tex/latex/tools/xspace.sty" 1706634437.46187 4545 9f5ea23ab1c91476c42749893f790666 ""
   "/home/lucasgac/.miktex/texmfs/install/tex/latex/url/url.sty" 1706634403.16114 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/home/lucasgac/.miktex/texmfs/install/tex/latex/xcolor/xcolor.sty" 1706634421.30153 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "/home/lucasgac/Documents/GitHub/Qualifica-o/main.tex" 1707921940.58029 69070 c7974c8c8868db963a9388536ae8fe9a ""
-  "main.aux" 1707921943.85625 3063 b5886700dc80cd880b85b94f890d2005 "pdflatex"
-  "main.out" 1707921943.86025 2676 a9918faabf93301f7d16ab1da454dd67 "pdflatex"
-  "main.tex" 1707921940.58029 69070 c7974c8c8868db963a9388536ae8fe9a ""
-  "main.toc" 1707921943.86025 1664 31b9f19f27c763c6ff3c15cd33d1766c "pdflatex"
+  "/home/lucasgac/Documents/GitHub/Qualifica-o/main.tex" 1709340177.12416 5589 741639ab3d2f4b5135e62cdd25c170e6 ""
+  "Seções/algebra_linear.tex" 1709663585.2786 109128 da8bcfcb3f789312ed8198c79827df86 ""
+  "Seções/analise_real.tex" 1709669412.04922 7830 ba942c3bddf446d3a7adabed600740cd ""
+  "main.aux" 1709669413.53324 4062 e2e879feab64644dbd319adcaa36c0c4 "pdflatex"
+  "main.out" 1709669413.53724 4433 c36d8a51a90495bfe60d3901a6c9405e "pdflatex"
+  "main.tex" 1709340177.12416 5589 741639ab3d2f4b5135e62cdd25c170e6 ""
+  "main.toc" 1709669413.53724 2375 b19ede28daaa1f440175bfca37fa53c4 "pdflatex"
   (generated)
   "main.aux"
   "main.log"

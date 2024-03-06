@@ -1,0 +1,114 @@
+\subsection{Sequências e Séries em \texorpdfstring{$\mathbb{R}$}{R}}
+
+\subsubsection*{Supremos e Ínfimos}
+
+\subsubsection*{Sequências}
+
+Uma \textbf{sequência} em um conjunto $X$ é uma função $x \colon \mathbb{Z}_{>0} \to X$. É costumeiro denotar $x(n)$ por $x_n$. Estamos interessados em sequências em $\mathbb{R}$. Costumamos denotar o mapa $x$ por $x_n$, $(x_n)$ ou $(x_n)_{n = 1}^\infty$. A nomenclatura usual de funções (limitada, monótona, estritamente crescente/decrescente, crescente/decrescente, constante e etc.) se aplicam também no contexto de sequências.
+
+\begin{corollary}
+    Como consequência das definições, $x_n$ é limitada se, e somente se, $|x_n|$ é limitada.
+\end{corollary}
+
+Uma \textbf{subsequência} de $x_n$ é uma sequência $y_k$ de maneira que para todo $k$ existe um $n_k \in \mathbb{Z}_{>0}$ tal que $y_k = x_{n_k}$. Por conta disso, ignoramos $y_k$ e denotamos a subsequência apenas por $x_{n_k}$. Fica claro que toda subsequência de uma sequência monótona (respectivamente limitada) também é monótona (respectivamente limitada).
+
+\begin{proposition}
+    Uma sequência $x_n$ monótona é limitada se, e somente se, possui uma subsequência limitada.
+\end{proposition}
+\begin{proof}
+    Vamos assumir que $x_n$ é crescente, pois os outros casos são análogos. Como já observamos, toda subsequência de uma sequência limitada, é limitada. Se $x_n$ é monótona e possui uma subsequência limitada, então $|x_{n_k}| \leq M$ para todo $k$ em algum $M > 0$. Note que, se $m \in \mathbb{Z}_{>0}$, então existe $k \in \mathbb{Z}_{>1}$ com $n_k > m$, ou seja, pela monotonicidade, temos \begin{equation}
+        |x_m| \leq |x_{n_k}| < M
+    \end{equation} e assim $x_n$ é limitada.
+\end{proof}
+
+Uma sequência satisfaz uma propriedade \textbf{eventualmente} se a propriedade é satisfeita para todo $x_n$ com $n$ \textbf{suficientemente grande}, isso é, para todo $x_n$ com $n \geq m$ para algum $m$ fixado. Por exemplo, $x_n$ é eventualmente crescente se existe $m$ tal que $x_n \leq x_{n+1}$ para todo $n \geq m$. Dizemos que $x_n$ \textbf{converge} para $x \in \mathbb{R}$ se $x_n$ fica arbitrariamente próximo de $x$ para $n$ suficientemente grande, isso é, se para todo $\varepsilon > 0$ bem pequeno existe um $m$ tal que $|x_n - x| < \varepsilon$ sempre que $n \geq m$. Nesse caso, dizemos que $x$ é o \textbf{limite} de $x_n$, e denotamos isso por \begin{equation}
+    x_n \to x, \quad \lim_{n \to \infty} x_n = x \quad \text{ou ainda} \quad \lim x_n = x.
+\end{equation} Quando, para $n$ arbitrariamente grande, $x_n$ se torna arbitrariamente grande, dizemos que $x_n$ \textbf{converge para o infinito} e escrevemos \begin{equation}
+    x_n \to \infty, \quad \lim_{n \to \infty} x_n = \infty \quad \text{ou ainda} \quad \lim x_n = \infty.
+\end{equation} Se a sequência $-x_n$ converge para o infinito, então escrevemos \begin{equation}
+    x_n \to -\infty, \quad \lim_{n \to \infty} x_n = -\infty \quad \text{ou ainda} \quad \lim x_n = -\infty
+\end{equation} e dizemos que $x_n$ \textbf{converge para o infinito negativo}. Se existe $x \in \mathbb{R}$ com $x_n \to x$, ou $x_n$ converge para o infinito, seja ele positivo ou negativo, dizemos que $x_n$ \textbf{converge} ou que $x_n$ é \textbf{convergente}.
+
+\begin{theorem}
+    Se $x_n \to a$ e $x_n \to b$, então $a = b$.
+\end{theorem}
+\begin{proof}
+    Se $x_n \to a$, então para $n$ suficientemente grande temos \begin{equation}
+        |x_n - a| < |a - b|/3 \quad \text{e} \quad |x_n - b| < |a - b|/3.
+    \end{equation} Dessa maneira, vale que \begin{equation}
+        |a - b| = |a - x_n + x_n - b| \leq |x_n - a| + |x_n - b| < 2|a - b|/3 < |a - b|,
+    \end{equation} o que é um absurdo.
+\end{proof}
+
+\begin{theorem}
+    Se $x_n \to x$, então toda subsequência $x_{n_k}$ de $x_n$ converge para $x$.
+\end{theorem}
+\begin{proof}
+    Dado $\varepsilon > 0$, para $n$ suficietemente grande temos $|x_n - x| < \varepsilon$. Porém, existe $k$ tal que $n_k > n$ e assim $n_s > n$ para todo $s \geq k$, da onde segue que $|x_{n_s} - x| < \varepsilon$.
+\end{proof}
+
+\begin{corollary}
+    Se $x_n \to x$ e $k \in \mathbb{Z}_{>1}$, então $x_{n + k} \to x$.
+\end{corollary}
+\begin{proof}
+    Basta notar que $x_{n_k} = x_{n + k}$ é uma subsequência de $x_n$.
+\end{proof}
+
+\begin{theorem}
+    Toda sequência que converge a um número real é limitada.
+\end{theorem}
+\begin{proof}
+    Se $x_n \to x$, dado $\varepsilon > 0$, para $n$ suficientemente grande temos $|x_n - x| < \varepsilon$. Dessa maneira, $x_n \in (x - \varepsilon, x + \varepsilon)$. Isso significa que existe um $M > 0$ tal que, para $n$ suficientemente grande, $|x_n| < M$. Porém, isso significa que apenas finitos $x_n$ estouram essa cota, assim podemos tomar \begin{equation}
+        R = \max\left\{\max_{|x_k| \geq M} |x_k|, M\right\}.
+    \end{equation} e assim $|x_n| < R+1$ para todo $n$.
+\end{proof}
+
+\begin{theorem}
+    Toda sequência monótona e limitada converge para um número real.
+\end{theorem}
+\begin{proof}
+    Vamos assumir que $x_n$ é crescente (os outros casos são análogos). Seja $a = \sup x_n$. Por definição, dado $\varepsilon > 0$, existe $n \in \mathbb{Z}_{>1}$ com $x_n > a - \varepsilon$. Como a sequência é crescente, então para todo $m \geq n$ temos $x_m \geq x_n > a - \varepsilon$, assim $a - x_m < \varepsilon$. Porém, como $a = \sup x_n$, $|a - x_m| = a - x_m < \varepsilon$, da onde segue que $x_n \to a$. Fica claro que, se $x_n$ fosse decrescente (estritamente ou não) teríamos $x_n \to \inf x_n$.
+\end{proof}
+
+\begin{corollary}
+    Se uma sequência monótona possui uma subsequência convergente, então converge.
+\end{corollary}
+\begin{proof}
+    Se $x_{n_k}$ converge, é limitada. Como $x_n$ é monótona e possui uma subsequência limitada, então $x_n$ é limitada. Como é monótona e limitada, converge.
+\end{proof}
+
+\begin{theorem}
+    Se $\lim x_n = 0$ e $y_n$ é limitada, então $\lim x_ny_n = 0$.
+\end{theorem}
+\begin{proof}
+    Como $y_n$ é limitada, existe $M > 0$ tal que $|y_n|<  M$ para todo $n$. Dado $\varepsilon > 0$, para todo $n$ suficientemente grande temos $|x_n| < \varepsilon/M$, assim \begin{equation}
+        |x_n y_n| = |x_n||y_n| < M \varepsilon/M = \varepsilon,
+    \end{equation} da onde sai que $x_ny_n \to 0$.
+\end{proof}
+
+\begin{proposition}
+    Se $x_n \to x$ e $y_n \to y$, então: \begin{itemize}
+        \item se $x_n \leq y_n$ para todo $n$, então $x \leq y$;
+        \item $x_n + y_n \to x + y$;
+        \item $x_ny_n \to xy$;
+        \item se $y_n \neq 0$ para todo $n$ e $y \neq 0$, então $x_n/y_n \to x/y$.
+    \end{itemize}
+\end{proposition}
+\begin{proof}
+    \begin{itemize}
+        \item Suponha que $x > y$. Então, tome $\varepsilon = (x-y)/2 > 0$. Para todo $n$ suficientemente grande, temos \begin{equation}
+            |x_n - x| < (x-y)/2 \quad \text{e} \quad |y_n - y| < (x-y)/2
+        \end{equation} para $n$ suficientemente grande. Porém, isso significa que 
+        \item Temos \begin{equation}
+            |(x_n + y_n) - (x + y)| = |x_n - x + y_n - y| \leq |x_n - x| + |y_n - y|
+        \end{equation} e, portanto, como ambas as parcelas da soma ficam arbitraiamente pequenas, $|x_n + y_n - x - y|$ também fica;
+        \item Temos \begin{align}
+            |x_ny_n - xy| &= |x_ny_n - x_ny + x_ny - xy| \\ &= |x_n(y_n - y) + y(x_n - x)| \\ &\leq |x_n||y_n - y| + |y||x_n - x|.
+        \end{align} Como $x_n$ converge, é limitada, assim ambas as parcelas ficam arbitrariamente pequenas e portanto $|x_ny_n - xy|$ também fica;
+        \item Temos \begin{align}
+            \left|\frac{x_n}{y_n} - \frac{x}{y}\right| &= \frac{|x_ny - xy_n|}{|y_n y|} = \frac{|x_ny - xy + xy - xy_n|}{|y_ny|} \leq \frac{|y||x_n - x| + |x||y_n - y|}{|y_n||y|} \\ &= 
+        \end{align}
+    \end{itemize}
+\end{proof}
+
+\subsubsection*{Séries}

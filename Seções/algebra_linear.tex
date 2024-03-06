@@ -1,0 +1,1295 @@
+\subsection{Fundamentos e Dualidade}
+
+\subsubsection*{Fundamentos}
+
+Tome $\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$. Um \textbf{espaço vetorial} é um conjunto $V$ munido de duas operações \begin{equation}
+    \begin{split}
+        + \colon V \times V &\to V \\ (x,y) &\mapsto x + y
+    \end{split} \quad \text{e} \quad \begin{split}
+        \cdot \colon \mathbb{K} \times V &\to V \\ (\lambda,x) &\mapsto \lambda x
+    \end{split}
+\end{equation} tais que a operação $+$ (soma) é comutativa, associativa, possui identidade e todos os inversos, e a operação de $\cdot$ (produto por escalar) satisfaz as relações distributivas, $1x = x$ e $\lambda(\mu x) = (\lambda\mu)x$.
+
+Um \textbf{subespaço vetorial} de um espaço vetorial $V$ é um subconjunto $S \subset V$ tal que para todos $x, y \in S$ e $\lambda \in \mathbb{K}$, temos $x + y \in S$ e $\lambda x \in S$. Todo espaço vetorial é um subespaço vetorial de si mesmo, assim como $\{0\}$ é sempre um subespaço vetorial. Chamamos $V$ e $\{0\}$ de \textbf{subespaços triviais}. Se $U, W \subset V$ são dois subespaços, então o conjunto $U + V = \{u + w \mid u \in U, w \in W\}$ é a \textbf{soma} desses subespaços, e é também um subespaço. Se $U \cap W = \{0\}$, então diremos que a soma desses espaços é uma \textbf{soma direta} e a denotamos por $U \oplus W$. A intersecção $U \cap W$ também é sempre um subespaço vetorial.
+
+Uma \textbf{combinação linear} de vetores em $V$ é uma soma finita \begin{equation}
+    \sum_{i = 1}^n \lambda^i x_i = 0
+\end{equation} onde cada $\lambda^i \in \mathbb{K}$ e cada $x_i \in V$. Dado um conjunto $S \subset V$, o conjunto $\langle S \rangle$ de todas as combinações lineares de elementos de $S$ é um subespaço vetorial de $V$, chamado de \textbf{subespaço gerado por $S$}. O conjunto $S$ é \textbf{gerador} de $V$ se $\langle S \rangle = V$.
+
+Dizemos que $x_1, \dots, x_n \in V$ são \textbf{linearmente independentes} se para quaisquer $\lambda^1, \dots, \lambda^n \in \mathbb{K}$ tais que \begin{equation}
+    \sum_{i = 1}^n \lambda^i x_i = 0,
+\end{equation} então $\lambda_i = 0$ para todo $i$. Vetores que não são linearmente independentes são \textbf{linearmente dependentes}. Fica claro da definição que um conjunto de vetores é linearmente dependente se, e somente se, um dos vetores pode ser escrito como combinação linear dos outros. Além disso, é fácil ver que se uma subcoleção de vetores é linearmente dependente, então a coleção original também é. Mais ainda, qualquer coleção de vetores que contenha o $0$ é linearmente dependente.
+
+\begin{lemma}\label{lemma1}
+    Sejam $S = \{s_1, \dots, s_n\}$ um gerador de $V$ e $v_1, \dots, v_m$ vetores linearmente independentes. Então, $m \leq n$.
+\end{lemma}
+\begin{proof}
+    Suponha que $m > n$. Como $S$ gera $V$, então existem $\lambda^1, \dots, \lambda^n$ tais que \begin{equation}
+        y_1 = \sum_{i = 1}^n \lambda^i s_i.
+    \end{equation} Como $y_1 \neq 0$ (pela independência linear), então algum $\lambda_j$ é não nulo, ou seja, podemos substituir $s_j$ por $y_1$ e o conjunto resultante ainda gera $V$. Pela independência linear dos $y_i$, podemos fazer essa operação mais $n-1$ vezes, garantindo que $y_1, \dots, y_n$ geram $V$. Porém, isso significa que $y_{n+1}, \dots, y_m$ são combinação linear de $y_1, \dots, y_n$, o que contradiz a independência linear. Segue então que $m \leq n$.
+\end{proof}
+
+Um espaço $V$ é \textbf{finitamente gerado} se existe um conjunto gerador finito. Uma \textbf{base} de $V$ é um conjunto gerador linearmente independente.
+
+\begin{lemma}\label{lemma2}
+    Todo espaço finitamente gerado possui uma base.
+\end{lemma}
+\begin{proof}
+    Se $S = \{s_1, \dots, s_n\}$ gera $V$, então se $S$ é linearmente independente o trabalho acabou. Caso contrário, algum $s_i$ é combinação linear dos outros, e então retiramos ele e o conjunto resultante ainda gera $V$. Fazemos isso até que os vetores que sobram em $S$ sejam linearmente independentes, e assim temos uma base.
+\end{proof}
+
+A partir de agora vamos trabalhar apenas com espaços finitamente gerados e, caso queiramos falar em um contexto mais geral, iremos explicitar. A \textbf{dimensão} de um espaço $V$, denotada por $\dim V$, é o número de elementos de uma base. Pelo Teorema a seguir, esse número está bem definido.
+
+\begin{theorem}
+    Toda base possui mesmo número de elementos.
+\end{theorem}
+\begin{proof}
+    Como bases são linearmente independentes e geradoras, o resultado segue facilmente do Lema \ref{lemma1}.
+\end{proof}
+
+O Lema \ref{lemma2} assume implicitamente que o conjunto $S$ que gera $V$ é não vazio. Caso tenhamos $V = \langle\varnothing\rangle$, então $V = \{0\}$ e o chamamos de \textbf{espaço trivial}. Sua dimensão é, por definição, nula.
+
+\begin{theorem}
+    Todo conjunto linearmente independente pode ser estendido para uma base.
+\end{theorem}
+\begin{proof}
+    Se $S$ é um conjunto linearmente independente, então considere $\langle S \rangle$. Se $\langle S \rangle = V$, então o conjunto $S$ já é uma base. Caso contrário, seja $v \in V \setminus \langle S \rangle$ e tome $S_1 = S \cup \{v\}$. Podemos agora testar se $\langle S_1 \rangle = V$ e, caso contrário, repetir o processo. Como o espaço $V$ é finitamente gerado, esse processo obrigatoriamente acaba, que é quando adicionamos vetores o suficiente em $S$ para que se torne uma base.
+\end{proof}
+
+Note que todo subespaço de um espaço com dimensão finita, possui dimensão finita (pelo Lema \ref{lemma1}). Se $W$ é um subespaço de $V$, um subespaço $U$ de $V$ é um \textbf{complemento} de $W$ se $U \oplus W = V$.
+
+\begin{theorem}
+    Complementos sempre existem e são únicos.
+\end{theorem}
+\begin{proof}
+    Se $W$ é um subespaço, seja $v_1, \dots, v_m$ uma base de $W$ e a complete para uma base $v_1, \dots, v_m, \\w_1, \dots, w_n$ de $V$. Defina $U = \langle w_1, \dots, w_n \rangle$. Se $x \in U \cap W$, então existem $\lambda^1, \dots, \lambda^m$ e $\mu^1, \dots, \mu^n$ em $\mathbb{K}$ tais que \begin{equation}
+        x = \sum_{i = 1}^m \lambda^i v_i = \sum_{j = 1}^n \mu^j w_j,
+    \end{equation}
+    ou seja, \begin{equation}
+        \sum_{i = 1}^m \lambda^i v_i + \sum_{j = 1}^n \mu^j w_j = 0,
+    \end{equation} portanto cada $\lambda^i$ e $\mu^j$ é nulo, da onde segue que $x = 0$ e assim $U \cap W = \{0\}$. Mais ainda, se $x \in V$, então podemos escrever \begin{equation}
+        x = \sum_{i = 1}^m \lambda^i v_i + \sum_{j = 1}^n \mu^j w_j
+    \end{equation} e assim $x = v + w$ com $v \in U$ e $w \in W$, da onde segue que $V = U \oplus W$.
+\end{proof}
+
+Note que da demonstração acima tiramos um outro fato importante: se $V = U \oplus W$, então $\dim V = \dim U + \dim W$. A \textbf{codimensão} de um subespaço $S$ em um espaço $V$ é definida por $\codim S = \dim V - \dim S$. Um espaço de codimensão $1$ é um \textbf{hiperplano} em $V$.
+
+Uma \textbf{transformação linear} é um mapa $T \colon V \to W$ entre espaços vetoriais tal que $T(x + y) = T(x) + T(y)$ e $T(\lambda x) = \lambda T(x)$ para todos $x, y \in V$ e $\lambda \in \mathbb{K}$. Se $T$ for bijetora, dizemos que é um \textbf{isomorfismo linear} e que $V$ e $W$ são \textbf{isomorfos}. A cada transformação linear estão associados dois subespaços vetoriais: o \textbf{núcleo} e a \textbf{imagem}: \begin{equation}
+    \ker T = \{v \in V \mid T(v) = 0\} \quad \text{e} \quad \im T = \{w \in W \mid w = T(v) \text{ para algum } v \in V\}.
+\end{equation} É importante notar que uma transformação linear pode ser unicamente determinada pelo seus valores em alguma base do domínio. De fato, se $e_1, \dots, e_n$ é uma base de $V$, então dado $v \in V$ temos $v = \lambda^i e_i$ e portanto, por linearidade, $T(v) = \lambda^i T(e_i)$, assim basta sabermos as coordenadas de $v$ e os valores de $T$ na base para determinar $T(v)$. A partir de agora, será comum denotarmos $Tv$ para $T(v)$ caso $T$ seja linear.
+
+\begin{proposition}
+    Uma transformação linear $T \colon V \to W$ é injetora se, e somente se, $\ker T = \{0\}$. Além disso, transformações lineares preservam dependência linear, e transformações lineares injetoras preservam independência linear.
+\end{proposition}
+\begin{proof}
+    Se $T$ é injetora, então $\ker T = \{0\}$ pois só existe um vetor que é levado em $0 \in W$, que é $0 \in V$. Agora, se $\ker T = \{0\}$, então se $T(v) = T(w)$, temos $T(v) - T(w) = 0$ e assim $T(v - w) = 0$, portanto $v - w = 0$ e assim $v = w$.
+
+    Se $v_1, \dots, v_n$ são linearmente dependentes, então existem $\lambda^1, \dots, \lambda^n$ não toodos nulos e tais que \begin{equation}
+        \sum_{i = 1}^{n} \lambda^i v_i = 0.
+    \end{equation} Dessa forma, se $T$ é linear, como $T(0) = 0$ temos \begin{equation}
+        \sum_{i = 1}^{n} \lambda^i T(v_i) = 0,
+    \end{equation} assim os vetores $T(v_i)$ são linearmente dependentes.
+
+    Se $v_1, \dots, v_n$ são linearmente independentes e $T$ é injetora, então considere uma combinação linear nula \begin{equation}
+        \sum_{i = 1}^n \lambda^i T(v_i) = 0.
+    \end{equation} Como $T$ é linear, isso equivale a dizer que \begin{equation}
+        T\left(\sum_{i = 1}^n \lambda^i v_i\right) = 0
+    \end{equation} e, como $T$ é injetora, então \begin{equation}
+        \sum_{i = 1}^{n} \lambda^i v_i = 0,
+    \end{equation} assim cada $\lambda^i = 0$ e portanto os vetores $T(v_i)$ são linearmente independentes.
+\end{proof}
+
+\begin{corollary}
+    Se $V$ e $W$ tem dimensão finita, então são isomorfos se, e somente se, tem a mesma dimensão.
+\end{corollary}
+\begin{proof}
+    Se $T \colon V \to W$ é isomorfismo, considere uma base $v_1, \dots, v_n$ de $V$. Então $T(v_1), \dots, T(v_n)$ são linearmente independentes e geram a imagem, afinal, se $w \in \im T$, então existe $v \in V$ com $T(v) = w$, assim \begin{equation}
+        w = T\left(\sum_{i = 1}^n \lambda^i v_i\right) = \sum_{i = 1}^n \lambda^i T(v_i).
+    \end{equation} Como $T$ é sobrejetor, $\im T = W$, portanto $T(v_1), \dots, T(v_n)$ formam base de $W$, assim $\dim V = \dim W$.
+
+    Se $\dim V = \dim W = n$, então sejam $v_1, \dots, v_n$ e $w_1, \dots, w_n$ bases de $V$ e $W$, respectivamente. Definimos $T \colon V \to W$ por $T(v_i) = w_i$ e o estendemos por linearidade, ou seja, se \begin{equation}
+        v = \sum_{i = 1}^n \lambda^i v_i,
+    \end{equation} definimos \begin{equation}
+        T(v) = \sum_{i = 1}^n \lambda^i w_i.
+    \end{equation} Esse mapa é injetor pois se $T(v) = 0$, $\lambda^i = 0$ e assim $v = 0$. O mapa é sobrejetor pois se \begin{equation}
+        w = \sum_{i = 1}^n \mu^i w_i \in W,
+    \end{equation} então \begin{equation}
+        T\left(\sum_{i = 1}^n \mu^i v_i\right) = w.
+    \end{equation}
+\end{proof}
+
+\begin{proposition}
+    Se $T \colon V \to W$ é um isomorfismo, então $T^{-1}$ também é.
+\end{proposition}
+\begin{proof}
+    $T^{-1}$ é também bijetora, então basta mostrarmos sua linearidade. Se $v, w \in W$ e $\lambda \in \mathbb{K}$, então \begin{equation}
+        T^{-1}(v + w) = T^{-1}(T(T^{-1}(v)) + T(T^{-1}(w))) = T^{-1}(T(T^{-1}(v) + T^{-1}(w))) = T^{-1}(v) + T^{-1}(w)
+    \end{equation} e, além disso, \begin{equation}
+        T^{-1}(\lambda v) = T^{-1}(\lambda T(T^{-1}(v))) = T^{-1}(T(\lambda T^{-1}(v))) = \lambda T^{-1}(v).
+    \end{equation}
+\end{proof}
+
+Com a noção de isomorfismo, podemos generalizar a noção de soma direta. Note que $V = U \oplus W$ se, e somente se, o mapa \begin{equation}
+    \begin{split}
+        + \colon U \times W &\to V \\ (u,w) &\mapsto u + w
+    \end{split}
+\end{equation} é um isomorfismo. Generalizando, dizemos que $V$ é a \textbf{soma direta} dos subespaços $V_1, \dots, V_n$ se o mapa \begin{equation}
+    \begin{split}
+        \sum \colon V_1 \times \cdots \times V_n &\to V \\ (v_1, \dots, v_n) &\mapsto v_1 + \cdots + v_n
+    \end{split}
+\end{equation} for um isomorfismo. Nesse caso, escrevemos \begin{equation}
+    V = V_1 \oplus \cdots \oplus V_n \quad \text{ou} \quad V = \bigoplus_{i = 1}^n V_i
+\end{equation} e fica claro que $\dim V = \dim V_1 + \cdots + \dim V_n$. Além disso, segue da bijetividade do mapa em questão que se $v \in V$ então existem $v_1, \dots, v_n$ com $v_i \in V_i$ únicos tais que $v = v_1 + \cdots + v_n$.
+
+Fixado $W$ um subespaço de um espaço $V$, podemos definir uma relação de equivalência, denotada por \begin{equation}
+    u \equiv v \mod W
+\end{equation} se, e somente se, $u - v \in W$. Denotamos a classe de equivalência de $v \in V$ por $[v]$ e o conjunto de todas as classes de equivalência por $V/W$, que será chamado de \textbf{quociente de V por W}. Esse conjunto possui estrutura de espaço vetorial utilizando as seguintes operações, que estão bem definidas: \begin{equation}
+    [v] + [w] = [v + w] \quad \text{e} \quad \lambda [v] = [\lambda v].
+\end{equation}
+
+\begin{proposition}
+    Se $V$ é um espaço vetorial e $W$ um subespaço, então $\dim V/W = \dim V - \dim W$. Mais precisamente, se $w_1, \dots, w_n$ é uma base de $V$ de maneira que $w_1, \dots, w_n, v_1, \dots, v_m$ é uma base de $V$, então $[v_1], \dots, [v_m]$ é uma base de $V/W$.
+\end{proposition}
+\begin{proof}
+    Primeiro, vamos verificar que $[v_1], \dots, [v_m]$ são linearmente independentes. De fato, considere uma combinação linear nula \begin{equation}
+        \sum_{i = 1}^n \lambda^i [v_i] = [0].
+    \end{equation} Pela definição das operaçções no quociente, temos que \begin{equation}
+        \left[\sum_{i = 1}^n \lambda^i v_i\right] = [0],
+    \end{equation} ou seja, \begin{equation}
+        \sum_{i = 1}^m \lambda^i v_i = w \in W.
+    \end{equation} Escrevendo $w$ na base de $W$, temos \begin{equation}
+        \sum_{i = 1}^m \lambda^i v_i = \sum_{j = 1}^n \mu^j w_j,
+    \end{equation} portanto $\lambda^i = \mu^j = 0$, da onde segue que $[v_1], \dots, [v_m]$ são linearmente independentes. O próximo passo é mostrar que esses vetores geram $V/W$. Se $[v] \in V/W$, então \begin{equation}
+        v = \sum_{i = 1}^m \lambda^i v_i + \sum_{j = 1}^n \mu^j w_j
+    \end{equation} e assim \begin{equation}
+        [v] = \left[\sum_{i = 1}^m \lambda^i v_i + \sum_{j = 1}^n \mu^j w_j\right] = \sum_{i = 1}^m \lambda^i [v_i] + \sum_{j = 1}^n \mu^j [w_j] = \sum_{i = 1}^m \lambda^i [v_i] + \sum_{j = 1}^n \mu^j [0] = \sum_{i = 1}^m \lambda^i [v_i].
+    \end{equation}
+\end{proof}
+
+Como corolário, se $\dim V = \dim W$, temos que $\dim V/W = 0$, portanto $V/W = \{0\}$ e assim $V = W$. O proxímo item é o que chamamos de teorema do isomorfismo, na sua versão linear.
+
+\begin{theorem}
+    Se $T \colon V \to W$ é linear, então o mapa \begin{equation}
+        \begin{split}
+            \tilde{T} \colon V/\ker T &\to \im T \\ [v] &\mapsto T(v)
+        \end{split}
+    \end{equation} está bem definido e é um isomorfismo linear. Como consequência, temos o teorema do núcleo e imagem: \begin{equation*}
+        \dim V = \dim \im T + \dim \ker T.
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    O mapa é sobrejetor, afinal, se $w \in \im T$, então existe $v \in V$ tal que $T(v) = w$, portanto $\tilde{T}([v]) = w$. O mapa é injetor, afinal, se $[v] \in \ker \tilde{T}$, então $\tilde{T}([v]) = 0$, assim $T(v) = 0$, portanto $v \in \ker T$ e assim $[v] = [0]$. Como $\dim V/\ker T = \dim V - \dim \ker T$ e $\tilde{T}$ é isomorfismo, então \begin{equation}
+        \dim V - \dim \ker T = \dim \im T,
+    \end{equation} de onde segue o resultado.
+\end{proof}
+
+Se $V$ e $W$ são espaços vetoriais, o conjunto $V \times W$ é também um espaço vetorial com as operações \begin{equation}
+    (x,y) + (v,w) = (x+v, y+w) \quad \text{e} \quad \lambda(x,y) = (\lambda x, \lambda y).
+\end{equation}
+
+Se $V = U + W$, e $I = U \cap W$, então podemos tomar $T \colon U \times W \to V$ dada por $(u,w) \mapsto u+w$. Como $V = U + W$, o mapa é sobrejetor. Além disso, seu núcleo é $\{(x,-x) \mid x \in I\}$, que é isomorfo a $I$, assim segue do teorema do isomorfismo que \begin{equation}
+    \dim U \times V = \dim V + \dim U \cap W
+\end{equation} e, como $\dim U \times V = \dim U + \dim V$, segue que \begin{equation}
+    \dim V = \dim U + \dim W - \dim U \cap W.
+\end{equation}
+
+\begin{proposition}\label{prop12}
+    Se $V$ e $W$ possuem a mesma dimensão finita, então são equivalentes as seguintes afirmações sobre uma transformação linear $T \colon V \to W$: \begin{itemize}
+        \item $T$ é injetora;
+        \item $T$ é sobrejetora;
+        \item $T$ é um isomorfismo;
+        \item $T$ leva bases em bases;
+    \end{itemize}
+\end{proposition}
+\begin{proof}
+    Se $T$ é injetora, então $\ker T = \{0\}$ e assim, pelo teorema do núcleo e imagem, $\dim W = \dim V = \dim \ker T + \dim \im T = \dim \im T$, assim $\im T = W$ e $T$ é sobrejetora.
+
+    Se $T$ é sobrejetora, então $\dim \im T = \dim W = \dim V$, assim $\dim V = \dim \ker T + \dim V$, portanto $\dim \ker T = 0$ e portanto $\ker T = \{0\}$, da onde segue que $T$ é injetora, e portanto um isomorfismo (pois já é sobrejetora).
+
+    Se $T$ é isomorfismo, então se $v_1, \dots, v_n$ é base de $V$, então pela injetividade, $T(v_1), \dots, T(v_n)$ são linearmente independentes. Mais ainda, $T(v_1), \dots, T(v_n)$ geram a imagem de $T$, que é $W$, portanto esses vetores formam base de $W$.
+
+    Por fim, se $T$ leva bases em bases, então se $v_1, \dots, v_n$ é base de $V$ e $T(v) = 0$, então se \begin{equation}
+        v = \sum_{i = 1}^n \lambda^i v_i,
+    \end{equation} temos \begin{equation}
+        0 = T(v) = \sum_{i = 1}^n \lambda^i T(v_i),
+    \end{equation} da onde segue, pela independência linear de $T(v_1), \dots, T(v_n)$, que $\lambda^i = 0$, assim $v = 0$ e portanto $T$ é injetora.
+\end{proof}
+
+\subsubsection*{Dualidade}
+
+A partir de agora, todo espaço será finitamente gerado, ou em outros termos, terá dimensão finita. Seja $V$ um espaço vetorial sobre $\mathbb{K}$ (lembrando que $\mathbb{K} = \mathbb{R}, \mathbb{C}$). Um \textbf{funcional} ou \textbf{covetor} em $V$ é um mapa linear $\phi \colon V \to \mathbb{K}$. Denotamos o conjunto de todos os funcionais lineares em $V$ por $V^*$. Esse conjunto se torna um espaço vetorial ao definirmos \begin{equation}
+    (\phi + \psi)(v) = \phi(v) + \psi(v) \quad \text{e} \quad (\lambda \phi)(v) = \lambda \phi(v).
+\end{equation}
+
+Fixada uma base $e = (e_1, \dots, e_n)$ de $V$ (aqui, $e$ representa uma lista de $n$ vetores), se $v[e] = (v^1, \dots, v^n)$ são as coordenadas de $v$ na base $e$, isso é, \begin{equation}
+    v = \sum_{i = 1}^n v^i e_i
+\end{equation}, então podemos definir os mapas \begin{equation}
+    \begin{split}
+        \varepsilon^i \colon V &\to \mathbb{K} \\ v &\mapsto v^i
+    \end{split},
+\end{equation} que vamos chamar de \textbf{diferenciais} com respeito a base $e$. A lista de vetores $\varepsilon = (\varepsilon^1, \dots, \varepsilon^n)$ é uma base de $V^*$, chamada de \textbf{base dual} de $e$. O fato dessa lista ser uma base implica diretamente que o mapa $e_i \mapsto \varepsilon^i$ é um isomorfismo entre $V$ e $V^*$. Esse isomorfismo não é natural, isso é, ele depende da escolha de base $e$. Uma outra base gera outro isomorfismo, e não existe uma base canônica que podemos considerar.
+
+Para um exemplo de isomorfismo natural, podemos considerar o \textbf{espaço bidual} de $V$, que é simplesmente $V^{**}$, isso é, o conjunto de todos os funcionais em $V^*$. Se $v \in V$ e $\phi \in V^*$, podemos definir $v(\phi) = \phi(v)$ e portanto tratar cada $v \in V$ como um elemento de $V^{**}$. Essa identificação gera um isomorfismo entre $V$ e $V^{**}$ que não depende de nenhuma escolha arbitrária.
+
+Seja $W$ um subespaço de $V$. O \textbf{aniquilador} de $W$, denotado por $W^\perp$, é o subespaço de $V^*$ consistido de todos os covetores que se anulam em $W$.
+
+\begin{proposition}
+    Se $W$ é subespaço de $V$, então \begin{equation}
+        \dim W^\perp + \dim W = \dim V,
+    \end{equation} ou seja, $\dim W^\perp = \codim W$.
+\end{proposition}
+\begin{proof}
+    Considere uma base $w_1, \dots, w_n$ de $W$ e um completamento $w_1, \dots, w_n, v_1, \dots, v_m$ para uma base de $V$. Defina $T \colon V \to V^*$ por $T(w_i) = 0$ e $T(v_i) = \nu_i$, onde $\nu_i$ são os elementos da base dual correspondentes a $v_i$. O núcleo de $T$ é claramente $W$, basta mostrarmos que $\im T = W^\perp$.
+
+    Se $\phi \in W^\perp$, então \begin{equation}
+        \phi = \sum_{i = 1}^n \lambda^i \omega_i + \sum_{j = 1}^m \mu^j \nu_j.
+    \end{equation} e assimm $\phi(w_i) == \lambda^i$, mas $\phi \in W^\perp$, portanto $\phi(w_i) = 0$, assim \begin{equation}
+        \phi = \sum_{j = 1}^m \mu^j \nu_j
+    \end{equation} e portanto \begin{equation}
+        T\left(\sum_{j = 1}^m \mu^j v_j\right) = \phi,
+    \end{equation} assim $\phi \in \im T$. Por outro lado, se $\phi \in \im T$, então $\phi$ é combinação linear dos covetores $\nu_1, \dots, \nu_m$, que estão todos em $W^\perp$, portanto $\phi \in W^\perp$, assim $\im T = W^\perp$.
+\end{proof}
+
+\begin{proposition}
+    Se $W$ é um subespaço de $V$, então o isomorfismo $v \mapsto (\phi \mapsto \phi(v))$ identifica $W$ com $W^{\perp \perp}$.
+\end{proposition}
+\begin{proof}
+    De fato, se $v \in W$, então precisamos mostrar que $v(\phi) = 0$ para todo $\phi \in W^\perp$, isso é, $w \in W^{\perp\perp}$. Isso, porém, é óbvio, já que $v(\phi) = \phi(v) = 0$, já que $v \in W$.
+
+    Agora, se $w \in W^{\perp\perp}$, então $w(\phi) = 0$ para todo $\phi \in W^\perp$, ou seja, $\phi(w) = 0$ para todo $\phi \in W^\perp$, assim $w \in W$.
+\end{proof}
+
+\subsection{Mapas Lineares, Matrizes, Determinante e Traço}
+
+\subsubsection*{Mapas Lineares e Matrizes}
+
+Um fato utilizando anteriormente, e que não foi provado, é que a composição de mapas lineares é linear.
+
+\begin{proposition}
+    Composição de mapas lineares é linear e, em particular, composição de isomorfismos é isomorfismo. Mais ainda, se $S$ e $T$ são isomorfismos, $(S \circ T)^{-1} = T^{-1} \circ S^{-1}$.
+\end{proposition}
+\begin{proof}
+    Se $T \colon V \to W$ e $S \colon W \to U$ são lineares, então dados $u,v \in V$ e $\lambda \in \mathbb{K}$, temos \begin{equation}
+        (S \circ T)(u + v) = S(T(u + v)) = S(T(u) + T(v)) = S(T(u)) + S(T(v)) = (S \circ T)(u) + (S \circ T)(v)
+    \end{equation} e, além disso, \begin{equation}
+        (S \circ T)(\lambda u) = S(T(\lambda u)) = S(\lambda T(u)) = \lambda S(T(u)) = \lambda (S \circ T)(u).
+    \end{equation}
+
+    Se $T$ e $S$ forem isomorfismos, então \begin{equation}
+        (S \circ T) \circ (T^{-1} \circ S^{-1}) = S \circ (T \circ T^{-1}) \circ S^{-1} = S \circ S^{-1} = \Id_U
+    \end{equation} e, além disso, \begin{equation}
+        (T^{-1} \circ S^{-1}) \circ (S \circ T) = T^{-1} \circ (S^{-1} \circ S) \circ T = T^{-1} \circ T = \Id_V.
+    \end{equation}
+\end{proof}
+
+Além disso, a demonstração de que o núcleo de um mapa linear é um subespaço vetorial também nunca foi apresentada, mas isso é por que esse fato é um corolário de um resultado um pouco mais geral.
+
+\begin{proposition}
+    Se $T \colon V \to W$ é linear e $U \subset W$ é um subespaço, então $T^{-1}(U)$ é um subesaço
+\end{proposition}
+\begin{proof}
+    De fato, se $u, v \in T^{-1}(U)$, então $T(u), T(v) \in W$, assim $T(u + v) = T(u) + T(v) \in W$, portanto $u + v \in T^{-1}(W)$. Mais ainda, se $\lambda \in \mathbb{K}$, então $T(\lambda u) = \lambda T(u) \in W$, assim $\lambda u \in T^{-1}(W)$.
+\end{proof}
+
+Podemos observar que, em coordenadas, todo mapa linear possui uma forma canônica.
+
+\begin{proposition}\label{prop17}
+    Se $\dim V = n$, $\dim W = m$ e $T \colon V \to W$ é linear, então fixadas $e$ e $f$ bases de $V$ e $W$ temos \begin{equation}
+        Tv[f] = \left(\sum_{i_1 = 1}^n \lambda^1_{i_1} v[e]^{i_1}, \dots, \sum_{i_m = 1}^n \lambda^m_{i_m} v[e]^{i_m}\right)
+    \end{equation} onde $Tv[f]$ são as coordenadas de $Tv$ na base $f$ e $v[e]^j$ é a $j$-ésima coordenada de $v$ na base $e$.
+\end{proposition}
+
+Podemos organizar os números $\lambda^i_j$ da Proposição \ref{prop17} em um retângulo da forma \begin{equation}
+    \begin{bmatrix}
+        \lambda^1_1 & \lambda^1_2 & \cdots & \lambda^1_{n-1} & \lambda^1_n \\ \lambda^2_1 & \lambda^2_2 & \cdots & \lambda^2_{n-1} & \lambda^2_n \\ \vdots & \vdots & \ddots & \vdots & \vdots \\ \lambda^{m-1}_1 & \lambda^{m-1}_2 & \cdots & \lambda^{m-1}_{n-1} & \lambda^{m-1}_n \\  \lambda^m_1 & \lambda^m_2 & \cdots & \lambda^m_{n-1} & \lambda^m_n
+    \end{bmatrix}
+\end{equation}
+
+Uma tabela nesse estilo será chamada de \textbf{matriz}. Cada coleção de números colocados na horizontal será uma \textbf{linha} da matriz, e cada coleção de números na vertical será uma \textbf{coluna} da matriz. Perceba que toda transformação da origem a uma matriz como a descrita acima, que vamos chamar de \textbf{matriz de $T$ com respeito as bases $e$ e $f$}. Para abreviar a notação, denotamos a matriz acima por $[T]_{e, f} = [\lambda^i_j]_{m \times n}$, onde $m$ e $n$ são o número de linhas e colunas, respectivamente.
+
+Agora vamos introduzir as operações em matrizes. Se $A = [a^i_j]_{n \times m}$ e $B = [b^i_j]_{n \times m}$ são matrizes, então podemos somá-las e multiplicar uma delas por um escalar da seguinte forma: \begin{equation}
+    A + B = [a^i_j + b^i_j]_{n \times m} \quad \text{e} \quad \lambda A = [\lambda a^i_j]_{n \times m}.
+\end{equation} Além disso, se $C = [c^i_j]_{m \times k}$ então podemos definir um produto entre $A$ e $C$ (note que o número de linhas de $C$ deve ser o mesmo número de colunas de $A$) fazendo \begin{equation}
+    AC = \left[\sum_{s = 1}^m a^i_s c^s_j\right]_{n \times k}.
+\end{equation} O produto não é comutativo, afinal, se $k \neq n$ então $CA$ pode nem estar definido. Se $k = n \neq m$, então necessariamente $AC \neq CA$, visto que $AC$ é $n \times n$ e $CA = m \times m$. Por fim, mesmo que $n = m = k$, poderíamos ter $AC \neq CA$, por exemplo: \begin{equation}
+    \begin{bmatrix}
+        2 & 1 \\ 0 & 1
+    \end{bmatrix} \begin{bmatrix}
+        3 & -2 \\ 1 & 3
+    \end{bmatrix} = \begin{bmatrix}
+        7 & -1 \\ 1 & 3
+    \end{bmatrix} \quad \text{e} \quad \begin{bmatrix}
+        3 & -2 \\ 1 & 3
+    \end{bmatrix} \begin{bmatrix}
+        2 & 1 \\ 0 & 1
+    \end{bmatrix} = \begin{bmatrix}
+        6 & 1 \\ 2 & 4
+    \end{bmatrix}.
+\end{equation}
+
+\begin{proposition}
+    Toda matriz vem de um mapa linear.
+\end{proposition}
+\begin{proof}
+    Se $A = [a^i_j]$ é uma matriz $n \times m$, podemos enxergá-la como um mapa $\mathbb{R}^m \to \mathbb{R}^n$ que pega vetores $x = (x^1, \dots, x^n)$ e retorna $Ax$, onde $x$ é visto como a matriz coluna \begin{equation}
+        x = \begin{bmatrix}
+            x^1 \\ \vdots \\ x^n
+        \end{bmatrix}
+    \end{equation} e $Ax$, que também é uma matriz coluna $n \times 1$, é identificada com um vetor de $\mathbb{R}^n$ da mesma maneira. O mapa é linear, afinal, \begin{equation}
+        A(x + y) = \left[\sum_{k = 1}^m a^i_k (x^k + y^k) \right]_{n \times 1} = \left[\sum_{k = 1}^m a^i_k x^k + \sum_{k = 1}^m a^i_k y^k \right]_{n \times 1} = Ax + Ay
+    \end{equation} e, além disso, \begin{equation}
+        A(\lambda x) = \left[\sum_{k = 1}^m a^i_k (\lambda x^k) \right]_{n \times 1} = \left[\lambda \sum_{k = 1}^m a^i_k x^k \right]_{n \times 1} = \lambda Ax.
+    \end{equation} É fácil notar que a matriz de $A$ com respeito às bases canônicas de $\mathbb{R}^m$ e $\mathbb{R}^n$ é a própria $A$.
+\end{proof}
+
+Todo sistema linear pode ser traduzido para uma equação de matrizes. De fato, considere o sistema linear \begin{equation}
+    \begin{cases}
+        a^1_1 x^1 + \cdots + a^1_m x^m = b^1 \\ \quad \quad \quad \quad \quad \vdots \\ a^n_1 x^1 + \cdots + a^n_m x^m = b^n
+    \end{cases}
+\end{equation} e perceba que, denotando $x = (x^1, \dots, x^n)$ e $b = (b^1, \dots, b^n)$, podemos escrever esse sistema simplesmente como $Ax = b$, onde $A = [a^i_j]_{n \times m}$.
+
+Se $n > m$, o sistema é dito \textbf{sobredeterminado}, e existem mais equações do que incógnitas. Nesse caso a matriz nunca pode ser sobrejetora, e sempre vão existir infinitos vetores $b$ tais que $Ax = b$ não possui solução. Se $b \in \im A$, note que $A^{-1}(b) = y + \ker A$ para algum $y$ tal que $Ay = b$, então ou toda solução é única (se $A$ for injetora) ou nenhuma solução é única (caso contrário).
+
+Se $m > n$, isso é, existe mais incógnitas do que equações, então $A$ nunca é injetora, e assim sempre que existe solução para $Ax = b$, a solução nunca é única. A justificativa é simples, afinal, $\dim \ker A = m - \dim \im A$ e $\dim \im A \leq n < m$, assim $\dim \ker A > 0$ e, se $b \in \im A$, então $A^{-1}(b) = y + \ker A$ para alguma solução $y$, assim $A^{-1}(b)$ é infinito.
+
+Se $n = m$, então se $Ax = b$ sempre tem solução, ela é sempre única, pois sobrejetividade e injetividade de $A$ são equivalentes. Nesse caso, $A$ é um isomorfismo, denotamos sua inversa por $A^{-1}$ e a solução do sistema é $x = A^{-1}b$. Note que checar a injetividade de $A$ é determinar se $Ax = 0$ possui solução não nula. Assumimos que o leitor já sabe técnicas de escalonamento de sistemas e portanto achar soluções já seja uma ferramenta conhecida.
+
+\begin{proposition}
+    Se $S, T \colon V \to U$ e $R \colon U \to W$ são lineares e $e$, $f$ e $g$ são bases de $V$, $U$ e $W$, respectivamente, então \begin{equation}
+        [T + S]_{e, f} = [T]_{e, f} + [S]_{e, f}, \quad [\lambda T]_{e, f} = \lambda [T]_{e, f} \quad \text{e} \quad [R \circ T]_{e, g} = [R]_{f,g} [T]_{e,f}.
+    \end{equation}
+\end{proposition}
+\begin{proof}
+    Note que, se $[T]_{e,f} = [\lambda^i_j]$, $[S]_{e,f} = [\mu^i_j]$ e $[R]_{f,g} = [\nu^i_j]$, então \begin{equation}
+        Te_j = \sum_{i = 1}^{\dim U} \lambda^i_j f_i, \quad Se_j = \sum_{i = 1}^{\dim U} \mu^i_j f_i \quad \text{e} \quad Rf_j = \sum_{i = 1}^{\dim W} \nu^i_j g_i,
+    \end{equation} assim \begin{equation}
+        (T + S)e_j = Te_j + Se_j = \sum_{i = 1}^{\dim U} \lambda^i_j f_i + \sum_{i = 1}^{\dim U} \mu^i_j f_i = \sum_{i = 1}^{\dim U} (\lambda^i_j + \mu^i_j) f_i,
+    \end{equation} portanto o resultado da soma segue. Similarmente, \begin{equation}
+        (\delta T)e_j = \delta Te_j = \delta \sum_{i = 1}^{\dim U} \lambda^i_j f_i = \sum_{i = 1}^{\dim U} (\delta \lambda^i_j) f_i,
+    \end{equation} portanto o resultado do produto por escalar segue. Por fim, \begin{equation}
+        (R \circ T)e_j = RTe_j = R\left(\sum_{i = 1}^{\dim U} \lambda^i_j f_i\right) = \sum_{i = 1}^{\dim U} \lambda^i_j Rf_i = \sum_{i = 1}^{\dim U} \lambda^i_j \sum_{k = 1}^{\dim W} \nu^k_i g_k = \sum_{k = 1}^{\dim W} \left(\sum_{i = 1}^{\dim U} \lambda^i_j \nu^k_i\right) g_k,
+    \end{equation} da onde segue o resultado da composição.
+\end{proof}
+
+Esse resultado é tudo que precisamos para tratar matrizes e mapas lineares como as mesmas entidades. Em particular, isso garante que $(AB)^{-1} = B^{-1}A^{-1}$ para matrizes também! Mesmo que o resultado tenha sido provado apenas para mapas.
+
+\begin{proposition}
+    Se $T, S \colon V \to U$ e $R \colon U \to W$ são lineares, então vale que $R \circ (T + S) = R \circ T + R \circ S$. Se $Q \colon W \to V$ é linear, então vale que $(T + S) \circ Q = T \circ Q + S \circ Q$.
+\end{proposition}
+\begin{proof}
+    Na primeira distributiva, basta usar que $R$ é linear e, na segunda, basta aplicar a definição da soma de mapas.
+\end{proof}
+
+Se $T \colon V \to U$ é linear, então induz um mapa $T^\top \colon U^* \to V^*$, chamado de \textbf{transposto} de $T$, dado por $T^\top(\phi) = \phi \circ T$. Ao mesmo tempo, dada uma matriz $A = [a^i_j]_{n \times m}$ definimos sua \textbf{matriz transposta} por $A^\top = [a^j_i]_{m \times n}$. Adivinhem?
+
+\begin{proposition}
+    Se $e$ é uma base de $V$, $f$ é uma base de $U$ e $\varepsilon$ e $\delta$ são suas bases duais, então \begin{equation}
+        [T']_{\delta, \varepsilon} = [T]_{e, f}^\top
+    \end{equation}
+\end{proposition}
+\begin{proof}
+    Como $\dim V = \dim V^*$ e $\dim U = \dim U^*$, as dimensões das duas matrizes batem. Agora, note que se \begin{equation}
+        Te_j = \sum_{i = 1}^{\dim U} \lambda^i_j f_i,
+    \end{equation} então \begin{equation}
+        (T^\top \delta^j)(e_k) = (\delta^j \circ T)(e_k) = \delta^j\left(\sum_{i = 1}^{\dim U} \lambda^i_k f_i\right) = \lambda^j_k,
+    \end{equation} assim, se $v[e] = (v^1, \dots, v^n)$ então \begin{equation}
+        (T^\top\delta^j)(v) = \sum_{i = 1}^{n} \lambda^j_i v^i = \sum_{i = 1}^n \lambda^j_i \varepsilon^i(v),
+    \end{equation} portanto \begin{equation}
+        T^\top \delta^j = \sum_{i = 1}^n \lambda^j_i \varepsilon^i,
+    \end{equation} provando assim o resultado.
+\end{proof}
+
+Vamos agora mostrar alguns fatos sobre a transposta de mapas lineares.
+
+\begin{proposition}
+    Se $T,S \colon V \to U$ e $R \colon U \to W$ são lineares, então $(R \circ T)^\top = T^\top \circ R^\top$, $(T + S)^\top = T^\top + S^\top$ e, se $T$ for um isomorfismo, então $T^\top$ também é e $(T^\top)^{-1} = (T^{-1})^\top$.
+\end{proposition}
+\begin{proof}
+    Note que \begin{equation}
+        (R \circ T)^\top\phi = \phi \circ R \circ T = T^\top(\phi \circ R) = T^\top(R^\top \phi)
+    \end{equation} e, além disso, \begin{equation}
+        (T + S)^\top\phi = \phi \circ (T + S) = \phi \circ T + \phi \circ S = T^\top \phi + S^\top phi.
+    \end{equation} Por fim, se $T$ for isomorfismo, então \begin{equation}
+        (T^\top \circ (T^{-1})^\top)\phi = \phi \circ T^{-1} \circ T = \phi \quad \text{e} ((T^{-1})^\top \circ T^\top)\phi = \phi \circ T \circ T^{-1} = \phi,
+    \end{equation} portanto $(T^\top)^{-1} = (T^{-1})^\top$.
+\end{proof}
+
+Até agora, temos maquinário para provar um monte de coisas sobre matrizes, usando mapas lineares. Mas e o contrário, é possível? Podemos garantir, por exemplo, que $T^{\top\top} = T$ (usando a idenficação natural $V^{**} = V$) usando apenas que isso é óbvio para matrizes? Sim! Porém, devemos anter terminar a nossa correspondência entre mapas lineares e matrizes. Já sabemos que toda matriz é um mapa linear, e todo mapa linear pode ser representado por uma matriz. Resta mostrar que essa correspondência ``vai e volta'': \begin{quotation}
+    Se $T \colon V \to U$ é um mapa linear, então o mapa induzido por uma matriz $[T]_{e,f}$ corresponde a $T$. Se $A$ é uma matriz, então a matriz do mapa induzido por $A$, em alguma base, é $A$.
+\end{quotation}
+A segunda parte já concluímos anteriormente, então basta entendermos a primeira mais precisamente, e prová-la.
+
+\begin{proposition}
+    Se $T \colon V \to U$ é um mapa linear, $\dim V = n$, $\dim U = m$ e $e$ e $f$ são bases de $V$ e $U$, então o mapa $\mathbb{R}^n \to \mathbb{R}^m$ induzido por $[T]_{e,f}$ leva $v[e]$ em $Tv[f]$.
+\end{proposition}
+\begin{proof}
+    Sejam $[T]_{e,f} = [\lambda^i_j]_{m \times n}$ e $v[e] = (v^1, \dots, v^n)$. Então o mapa induzido por $[T]_{e,f}$ é dado por \begin{equation}
+        [T]_{e,f}(v^1, \dots, v^n) = \left(\sum_{i = 1}^n \lambda^1_i v^i, \dots, \sum_{i = 1}^n \lambda^m_i v^i\right).
+    \end{equation} Agora, note que \begin{equation}
+        Tv = T\left(\sum_{i = 1}^n v^i e_i\right) = \sum_{i = 1}^n v^i T(e_i) = \sum_{i = 1}^n v^i \sum_{j = 1}^m \lambda^j_i f_j = \sum_{j = 1}^m \left(\sum_{i = 1}^n \lambda^j_i v^i\right) f_j,
+    \end{equation} o que conclui que $Tv[f] = [T]_{e,f}v[e]$.
+\end{proof}
+
+\begin{corollary}
+    Se $T, S \colon V \to U$ são lineares e existem bases $e$ e $f$ de $V$ e $U$ tais que $[T]_{e,f} = [S]_{e,f}$, então $T = S$.
+\end{corollary}
+\begin{proof}
+    Como $[T]_{e,f} = [S]_{e,f}$, então eles levam $v[e]$ em $Tv[f] = Sv[f]$, portanto $Tv = Sv$.
+\end{proof}
+
+Vamos usar isso ao nosso favor! Note que, em termos de matrizes, fica bem claro que, para qualquer matriz $T$, $T^{\top\top} = T$, já que estamos apenas trocando linhas por colunas, duas vezes. Isso indica, claro, que o mesmo vale para mapas lineares!
+
+\begin{proposition}
+    Fazendo as identificações naturais de $V^{**} = V$ e $U^{**} = U$, se $T \colon V \to U$ é linear, então $T^{\top\top} = T$.
+\end{proposition}
+\begin{proof}
+    Como \begin{equation}
+        [T]^\top_{e,f} = [T^\top]_{\delta, \varepsilon} \implies [T]^{\top \top}_{e,f} = [T^\top]^\top_{\delta, \varepsilon},
+    \end{equation} e também \begin{equation}
+        [T]^{\top\top}_{e,f} = [T]_{e,f} \quad \text{e} \quad [T^\top]^\top_{\delta, \varepsilon} = [T^{\top\top}]_{e,f},
+    \end{equation} então \begin{equation}
+        [T]_{e,f} = [T^{\top\top}]_{e,f}.
+    \end{equation}
+\end{proof}
+
+Prosseguindo com matrizes, vamos agora falar de posto. Dada uma matriz $A$ de dimensões $n \times m$, o \textbf{posto} de $A$, denotado $\rank A$, e que é a dimensão da imagem de $A$. Também definimos o \textbf{posto de linhas} de $A$, que é o maior número de linhas de $A$ linearmente independentes, quando consideradas como vetores de $\mathbb{R}^m$. Por fim, definimos o \textbf{posto de colunas} de $A$, que é o maior número de colunas de $A$ linearmente independentes, quando consideradas como vetores de $\mathbb{R}^n$. A ideia é mostrarmos que todos esses são equivalentes.
+
+\begin{proposition}
+    As colunas de $A = [a^i_j]_{n \times m}$ geram $\im A$. 
+\end{proposition}
+\begin{proof}
+    Se $x \in \mathbb{R}^m$, então $Ax \in \mathbb{R}^n$ e, se $x = (x^1, \dots, x^m)$, temos \begin{equation}
+        Ax = \left(\sum_{j = 1}^m a^1_j x^j, \dots, \sum_{j = 1}^m a^n_j x^j\right) = \sum_{j = 1}^m x^j (a^1_j, \dots, a^n_j).
+    \end{equation}
+\end{proof}
+
+\begin{corollary}
+    O posto de colunas de uma matriz é igual ao posto dessa mesma matriz.
+\end{corollary}
+
+A parte problemática é mostrar que o posto de linhas e colunas é o mesmo. Bom, o caminho para isso é simples: o posto de linhas de $A$ é o posto de colunas de $A^\top$, que é o posto de $A^\top$. Se mostrarmos que $\rank A^\top = \rank A$, o trabalho terminou. Para isso, vamos utilizar a noção de aniquilador que vimos anteriormente.
+
+\begin{theorem}
+    Se $T \colon V \to U$ é linear, então $(\im T)^\perp = \ker T^\top$.
+\end{theorem}
+\begin{proof}
+    Se $\phi \in (\im T)^\perp$, então dado $v \in V$, $\phi(Tv) = 0$, isso é, $T^\top\phi = 0$, ou seja, $\phi \in \ker T^\top$. Por outro lado, se $\phi \in \ker T^\top$, então $T^\top \phi = 0$, ou seja, se $u \in \im T$, então existe $v \in V$ com $u = Tv$, assim $\phi(u) = \phi(Tv) = 0$ e portanto $\phi \in (\im T)^\perp$.
+\end{proof}
+
+\begin{corollary}
+    Se $T \colon V \to U$ é linear, então $\dim \im T = \dim \im T^\top$.
+\end{corollary}
+\begin{proof}
+    Pelo teorema do núcleo e imagem, \begin{equation}
+        \dim \im T^\top + \dim \ker T^\top = \dim U^*
+    \end{equation} e, como \begin{equation}
+        \dim (\im T)^\perp + \dim \im T = \dim U,
+    \end{equation} então o resultado segue, usando que $\dim U = \dim U^*$ e $\dim (\im T)^\perp = \dim \ker T^\top$.
+\end{proof}
+
+Vamos agora focar a discussão em transformações lineares da forma $T \colon V \to V$, que costumamos chamar de \textbf{operadores} em $V$. Denotamos o conjunto dos operadores por $\mathcal{L}(V,V)$. Por consequência, nossa discussão de matrizes irá também se limitar a \textbf{matrizes quadradas}, isso é, aquelas em que o número de linhas é igual ao número de colunas. Note que a composição de mapas em $\mathcal{L}(V,V)$ sempre está definida, assim como o produto de duas matrizes quadradas de mesmas dimensões, por mais que ele não seja comutativo. O mapa identidade $\Id \colon V \to V$ é claramente linear e, dada $e$ uma base de $V$, como $\Id(e) = e$, fica claro que \begin{equation}
+    [\Id]_{e,e} = \begin{bmatrix}
+        1 & 0 & \cdots & 0 \\ 0 & 1 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & 1
+    \end{bmatrix},
+\end{equation} que a partir de agora será chamada de \textbf{matriz identidade $n \times n$}, em que $n = \dim V$.
+
+A partir de agora, iremos utilizar que a composição de mapas corresponde ao produto de matrizes e omitir o sinal de composição em mapas lineares. Dados dois mapas lineares $T, S \in \mathcal{L}(V,V)$, definimos $T_S = STS^{-1}$. O mapa $T \mapsto T_S$ é uma \textbf{conjugação}. Dizemos que $T_S$ é \textbf{similar} ou \textbf{conjugada} a $T$. Esse mapa é claramente um isomorfismo linear (basta ver que a conjugação por $S^{-1}$ é o mapa inverso da conjugação por $S$).
+
+\begin{theorem}
+    Conjugação é uma relação de equivalência.
+\end{theorem}
+\begin{proof}
+    Se $R = T_S$ para alguma $T$, então $T = R_{S^{-1}}$, assim conjugação é simétrica. Mais ainda, $T = T_{\Id}$, então conjugação é reflexiva. Por fim, se $R = T_S$ e $T = K_L$, então $R = T_S = (K_L)_S = K_{SL}$. 
+\end{proof}
+
+Mais ainda, fica claro que se $M$ é inversível (possui inversa) e conjugada a $T$, então $T$ é inversível. De fato, se $M = T_S$, então $T = M_{S^{-1}} = M_S^{-1}$, portantoo $T^{-1} = M_S$.
+
+\subsubsection*{Determinantes e Traço}
+
+Para definirmos a noção de determinante, precisamos de permutações. Se $X = \{x_1, \dots, x_n\} \subset \mathbb{N}$, uma \textbf{permutação em $X$} é uma bijeção $\sigma \colon X \to X$. O \textbf{discriminante} de $X$ é o número \begin{equation}
+    D(x_1, \dots, x_n) = \prod_{i < j} (x_i - x_j).
+\end{equation} O \textbf{sinal} da permutação $\sigma$ é o número $(-1)^\sigma$ que satisfaz \begin{equation}
+    P(x_1, \dots, x_n) = (-1)^\sigma P(X_{\sigma(1)}, \dots, x_{\sigma(n)}).
+\end{equation} Denotamos por $S_n$ o conjunto de todas as permutações em $[n] = \{1, \dots, n\}$. Se $A = [a^i_j]_{n \times n}$ é uma matriz, definimos o determinante \begin{equation}
+    \det(A) = \sum_{\sigma \in S_n} (-1)^\sigma a^1_{\sigma(1)} \cdots a^n_{\sigma(n)}.
+\end{equation}
+
+\begin{proposition}\label{prop31}
+    Se $A$ é uma matriz $n \times n$, então $\det(A) = \det(A^\top)$.
+\end{proposition}
+\begin{proof}
+    De fato, basta usar que $(-1)^\sigma = (-1)^{\sigma^{-1}}$ e temos \begin{align}
+        \det(A^\top) &= \sum_{\sigma \in S_n} (-1)^\sigma a^{\sigma(1)}_1 \cdots a^{\sigma(n)}_n \\ &= \sum_{\sigma \in S_n} (-1)^{\sigma^{-1}} a^1_{\sigma^{-1}(1)} \cdots a^n_{\sigma^{-1}(n)} \\ &= \det(A).
+    \end{align}
+\end{proof}
+
+\begin{theorem}
+    Valem as seguintes propriedades:
+    \begin{enumerate}
+        \item Se $a_j = (a^1_j, \dots, a^n_j)$ e $a^i = (a^i_1, \dots, a^i_n)$, então podemos enxergar $\det$ como uma função das colunas $a_j$ ou das linhas $a^i$. Para toda $\sigma \in S_n$, \begin{equation}
+            \det(a_{\sigma(1)}, \dots, a_{\sigma(n)}) = (-1)^\sigma \det(a_1, \dots, a_n) \quad \text{e} \quad \det(a^{\sigma(1)}, \dots, a^{\sigma(n)}) = (-1)^\sigma \det(a^1, \dots, a^n);
+        \end{equation}
+        \item Se duas colunas ou duas linhas de $A$ forem iguais, então $\det(A) = 0$;
+        \item O $\det$ é multilinear, isso é, para todos $i, j$, \begin{equation}
+            \det(a_1, \dots, a_{j-1}, \lambda a_j + b_j, a_{j + 1}, \dots, a_n) = \lambda \det(a_1, \dots, a_n) + \det(a_1, \dots, a_{j-1}, b_j, a_{j+1}, \dots, a_n)
+        \end{equation} e \begin{equation}
+            \det(a^1, \dots, a^{i-1}, \lambda a^i + b^i, a^{i + 1}, \dots, a^n) = \lambda \det(a^1, \dots, a^n) + \det(a^1, \dots, a^{i-1}, b^i, a^{i+1}, \dots, a^n);
+        \end{equation}
+        \item $\det(\Id_{n \times n}) = 1$;
+        \item Se $a_1, \dots, a_n$ ou $a^1, \dots, a^n$ forem linearmente dependentes, então $\det(A) = 0$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item Se $\sigma \in S^n$, então \begin{align}
+            \det(a_{\sigma(1)}, \dots, a_{\sigma(n)}) &= \sum_{\rho \in S_n} (-1)^\rho a^1_{\rho(\sigma(1))} \cdots a^n_{\rho(\sigma(n))} \\ &= (-1)^\sigma \sum_{\rho \in S_n} (-1)^\rho (-1)^\sigma a^1_{\rho(\sigma(1))} \cdots a^n_{\rho(\sigma(n))} \\ &= (-1)^\sigma \sum_{\rho \in S_n} (-1)^{\rho \circ \sigma} a^1_{\rho(\sigma(1))} \cdots a^n_{\rho(\sigma(n))} \\ &= (-1)^{\sigma} \det(a_1, \dots, a_n).
+        \end{align} O resultado para a permutação de linhas sai do fato de que $\det(A) = \det(A^\top)$;
+
+        \item Se $a_i = a_j$, seja $\sigma$ a permutação dada por $\sigma(i) = j$, $\sigma(j) = i$ e que fixa todo o resto. Temos \begin{equation}
+            \det(a_1, \dots, a_i, \dots, a_j, \dots, a_n) = -\det(a_1, \dots, a_j, \dots, a_i, \dots, a_n)
+        \end{equation} e portanto, como $a_i = a_j$, temos $\det(A) = -\det(A)$, assim $\det(A) = 0$. O resultado para o caso em que duas linhas são iguais sai do fato de que $\det(A) = \det(A^\top)$;
+
+        \item De fato, temos \begin{align}
+            \det(a^1, \dots, \lambda a^i + b^i, \dots, a^n) &= \sum_{\sigma \in S_n} (-1)^\sigma a^1_{\sigma(1)} \cdots (\lambda a^i_{\sigma(i)} + b^i_{\sigma(i)}) \cdots a^n_{\sigma(n)} \\ &= \lambda \sum_{\sigma \in S_n} (-1)^\sigma a^1_{\sigma(1)} \cdots a^i_{\sigma(i)} \cdots a^n_{\sigma(n)} + \sum_{\sigma \in S_n} (-1)^\sigma a^1_{\sigma(1)} \cdots b^i_{\sigma(i)} \cdots a^n_{\sigma(n)} \\ &= \lambda \det(a^1, \dots, a^n) + \det(a^1, \dots, b^i, \dots, a^n).
+        \end{align} O resultado análogo para o caso da multilinearidade nas colunas sai do fato de que $\det(A) = \det(A^\top)$;
+
+        \item Temos $a^i_j = 0$ se $i \neq j$, e a única prmutação que fixa todos os valores é a identidade, que tem sinal $1$, portannto \begin{equation}
+            \det(\Id_{n \times n}) = a^1_1 \cdots a^n_n = 1;
+        \end{equation}
+
+        \item Se $a_i = \lambda^1 a_1 + \cdots + \lambda^{i-1}a_{i-1} + \lambda^{i+1}a_{i+1} + \cdots + \lambda^n a_n$, então \begin{align}
+            \det(a_1, \dots, a_i, \dots, a_n) &= \det(a_1, \dots, \lambda^1 a_1 + \cdots + \lambda^{i-1}a_{i-1} + \lambda^{i+1}a_{i+1} + \cdots + \lambda^n a_n, \dots, a_n) \\ &= \sum_{j = 1, j \neq i}^n \lambda^j \det(a_1, \dots, a_j, \dots, a_n)
+        \end{align} e, como cada $a_j$ é uma cópia de outra coluna, todos os determinantes dentro do somatório são nulos, assim $\det(A) = 0$. O resultado análogo para a dependência linear das linhas sai do fato de que $\det(A) = \det(A^\top)$.
+    \end{enumerate}
+\end{proof}
+
+Essas propriedades são importantes para fazer contas, porém, elas são mais importantes ainda pois podem ser utilizadas para definir o determinante!
+
+\begin{proposition}
+    As propriedades $1$, $3$ e $4$ definem unicamente o determinante.
+\end{proposition}
+\begin{proof}
+    Queremos mostrar que qualquer função $D(a_1, \dots, a_n)$ que seja multilinear, alternada e que tenha valor $1$ na base canônica de $\mathbb{R}^n$, é o determinante. Note que as propriedades $2$ e $5$ também valém para qualquer $D$ desse tipo, já que são consequências das outras.
+
+    Como $a_j = (a^1_j, \dots, a^n_j) = a^1e_i + \cdots + a^ne_n$ onde $e_i$ é a base canônica, então usando as propriedades $3$ e $4$ temos \begin{align}
+        D(a_1, \dots, a_n) &= \sum_{i_1 = 1}^n a^{i_1}_1 D(e_{i_1}, a_2, \dots, a_n) \\ &= \sum_{i_1 = 1}^n \sum_{i_2 = 1}^n a^{i_1}_1 a^{i_2}_2 D(e_{i_1}, e_{i_2}, a_3, \dots, a_n) \\ &= \sum_{i_1 = 1}^n \cdots \sum_{i_n = 1}^n a^{i_1}_1 \cdots a^{i_n}_n D(e_{i_1}, \dots, e_{i_n})
+    \end{align} e, denotando por $\sigma_{i_1, \dots, i_n}$ a permutação $\sigma(j) = i_j$ temos \begin{equation}
+        D(e_{i_1}, \dots, e_{i_n}) = (-1)^{\sigma_{i_1, \dots, i_n}} D(e_1, \dots, e_n) = (-1)^{\sigma_{i_1, \dots, i_n}}.
+    \end{equation} Porém, como todas as combinações de $i_1, \dots, i_n$ são atingidas nos somatórios, $\sigma_{i_1, \dots, i_n}$ eventualmente se passa por todas as permutações, assim \begin{equation}
+        D(a_1, \dots, a_n) = \sum_{\sigma \in S_n} (-1)^\sigma a^{\sigma(1)}_1 \cdots a^{\sigma(n)}_n = \det(A^\top) = \det(A).
+    \end{equation}
+\end{proof}
+
+O próximo passo é mostrar que o determinante é multiplicativo. Para isso introduzimos uma notação. Se $A$ é uma matriz $n \times n$ e $t \in \mathbb{R}$, então $A + t$ é definido como $A + t\Id_{n \times n}$.
+
+\begin{theorem}
+    Se $A$ e $B$ são matrizes $n \times n$, então $\det(AB) = \det(A)\det(B)$.
+\end{theorem}
+\begin{proof}
+    Suponha que $\det(B) \neq 0$ e defina $D(A) = \det(AB)/\det(B)$. Seja $e_1, \dots, e_n$ é a base canônica de $\mathbb{R}^n$. Se $f_i \in \mathbb{R}^n$, então existe uma matriz $n \times n$ tal que $f_i = Ce_i$. Assim, \begin{align}
+        D(Ae_1, \dots, \lambda Ae_i + Ce_i, \dots, Ae_n) &= \frac{\det(ABe_1, \dots, (\lambda A+C)Be_i, \dots, ABe_n)}{\det(B)} \\ &= \frac{\lambda \det(ABe_1, \dots, ABe_n) + \det(ABe_1, \dots, CBe_i, \dots, ABe_n)}{\det(B)} \\ &= \lambda D(Ae_1, \dots, Ae_n) + D(Ae_1, \dots, Ce_i, \dots, Ae_n),
+    \end{align} da onde segue a multilinearidade. Mais ainda, \begin{equation}
+        D(\Id_{n \times n}) = \det(\Id_{n \times n} B)/\det(B) = \det(B)/\det(B) = 1
+    \end{equation} e \begin{align}
+        D(Ae_{\sigma(1)}, \dots, Ae_{\sigma(n)}) &= \det(AB_{\sigma(1)}, \dots, ABe_{\sigma(n)})/\det(B) \\ &= (-1)^\sigma \det(ABe_1, \dots, ABe_n)/\det(B) \\ &= (-1)^\sigma D(Ae_1, \dots, Ae_n),
+    \end{align} portanto segue que $D(A) = \det(A)$ e assim $\det(AB) = \det(A)\det(B)$. Se $\det(B) = 0$, tome $B(t) = B + t$. Temos que $\det(B(t))$ é um polinômio não nulo (afinal, é mônico), portanto $\det(AB(t)) = \det(A)\det(B(t))$ e, tomando $t \to 0$, o resultado segue.
+\end{proof}
+
+\begin{corollary}
+    Uma matriz quadrada $A$ é inversível se, e somente se, $\det(A) \neq 0$.
+\end{corollary}
+\begin{proof}
+    Se $A$ é inversível, então existe $B$ com $AB = \Id$, assim $\det(A) \det(B) = \det(\Id) = 1$, portanto é impossível que $\det(A)$ seja nulo. Por outro lado, se $A$ não é inversível, então $A$ não é sobrejetora, portanto sua imagem, o espaço gerado pelas suas colunas, é próprio, da onde segue que suas colunas são linearmente dependentes e assim o seu determinante é nulo.
+\end{proof}
+
+Deixo aqui mais duas fórmulas que podem ser úteis para o cálculo de determinantes e de inversas, sem as demonstrações. se $A$ é uma matriz $n \times n$, denotamos por $A^i_j$ a matriz $(n-1) \times (n-1)$ dada pela remoção da $i$-ésima linha e da $j$-ésima coluna de $A$. Valem as seguintes identidades: \begin{equation}
+    \det(A) = \sum_{i = 1}^n (-1)^{i + j} a^i_j \det(A^i_j) \quad \text{e} \quad A^{-1} = \left[(-1)^{i + j}\frac{\det(A_{ji})}{\det(A)}\right]_{n \times n}.
+\end{equation}
+
+Para terminarmos esse capítulo, vamos falar do traço. Se $A$ é uma matriz $n \times n$, seu \textbf{traço} é definido por \begin{equation}
+    \tr(A) = \sum_{i = 1}^n a^i_i.
+\end{equation} Fica claro da definição que o traço é linear.
+
+\begin{proposition}
+    Se $A$ e $B$ são matrizes $n \times n$, $\tr(AB) = \tr(BA)$.
+\end{proposition}
+\begin{proof}
+    Temos \begin{equation}
+        \tr(AB) = \sum_{i = 1}^n \sum_{k = 1}^n a^i_k b^k_i = \sum_{k = 1}^n \sum_{i = 1}^n a^k_i b^i_k = \tr(BA)
+    \end{equation}
+\end{proof}
+
+\begin{proposition}
+    Se $A$ é uma matriz $n \times n$, então \begin{equation}
+        \tr(AA^\top) = \sum_{i = 1}^n \sum_{j = 1}^n (a^i_j)^2
+    \end{equation}
+\end{proposition}
+\begin{proof}
+    De fato, \begin{equation}
+        \tr(AA^\top) = \sum_{i = 1}^n \sum_{j = 1}^n a^i_j a^i_j = \sum_{i = 1}^n \sum_{j = 1}^n (a^i_j)^2
+    \end{equation}
+\end{proof}
+
+Agora recordamos a noção de similaridade, mas para matrizes. Se $M$ e $T$ são matrizes $n \times n$, dizemos que $M$ é \textbf{similar} a $T$ se $M = STS^{-1}$ para alguma matriz $S$ inversível.
+
+\begin{proposition}
+    Matrizes similares possuem mesmo traço e determinante.
+\end{proposition}
+\begin{proof}
+    Se $M = STS^{-1}$, então \begin{align}
+        \det(M) = \det(STS^{-1}) = \det(S^{-1}ST) = \det(T) \quad \text{e} \quad \tr(M) = \tr(STS^{-1}) = \tr(S^{-1}ST) = \tr(T).
+    \end{align}
+\end{proof}
+
+O próximo passo agora é falar sobre mudanças de coordenadas. Se $e = (e_1, \dots, e_n)$ e $f = (f_1, \dots, f_n)$ são bases de $V$, então podemos escrever \begin{equation}
+    e_j = \sum_{i = 1}^n a^i_j f_i.
+\end{equation} A matriz $A = [a^i_j]_{n \times n}$ leva a base $f$ na base $e$ (escrevemos $e = Af$). Note que $A$ é inversível, afinal, caso seu determinante fosse nulo, os vetores $e_j$ seriam linearmente dependentes. Agora, se $v[e] = (v^1, \dots, v^n)$ e $v[f] = (u^1, \dots, u^n)$, então \begin{equation}
+    v = \sum_{j = 1}^n v^j e_j = \sum_{j = 1}^n v^j \sum_{i = 1}^n a^i_j f_i = \sum_{i = 1}^n \left(\sum_{j = 1}^n a^i_j v^j\right) f_i,
+\end{equation} portanto $v[f] = Av[e]$ e assim $v[e] = A^{-1}v[f]$. A matriz $A$ portanto é chamada de \textbf{matriz de mudança da base $e$ para a base $f$}. Note que a mesma matriz que leva a base $f$ na base $e$, leva as coordenadas de $v$ na base $e$ para as coordenadas de $v$ na base $f$, isso é: \begin{quotation}
+    ``as coordenadas de um vetor mudam contra a mudança de base''.
+\end{quotation} Por esse motivo, dizemos que vetores são \textbf{quantidades contravariantes}. Por outro lado, considerando as bases duais $\varepsilon$ e $\phi$ de $e$ e $f$, se $\mu[\varepsilon] = (\mu_1, \dots, \mu_n)$ então \begin{equation}
+    \mu(v) = \sum_{i = 1}^n \mu_i \phi^i(v) = \sum_{i = 1}^n \mu_i u^i = \sum_{i = 1}^n \mu_i \sum_{j = 1}^n a^i_j v^j = \sum_{j = 1}^n \left(\sum_{i = 1}^n a^i_j \mu_i\right)\varepsilon^j(v),
+\end{equation} da onde segue que $\mu[\varepsilon] = A\mu[\phi]$, ou seja, \begin{quotation}
+    ``as coordenadas de um covetor mudam a favor da mudança de base''.
+\end{quotation} Por esse motivo, dizemos que vetores são \textbf{quantidades covariantes}. Índices em quantidades contravariantes sempre são colocados embaixo, e os índices em quantidades covariantes sempre são colocados em cima. Índices em coordenadas sempre são colocados ao contrário (coordenadas de vetores tem índice em cima, e coordenadas de covetores tem índice em baixo).
+
+Se $T \colon V \to W$ é linear, então fixe $e$ e $f$ bases de $V$ e $x$ e $y$ bases de $W$. Vamos entender como se da a transformação de $[T]_{f,y}$ em $[T]_{e,x}$. Se \begin{equation}
+    Te_j = \sum_{i = 1}^m \lambda^i_j x_i \quad \text{e} \quad Tf_j = \sum_{i = 1}^m \mu^i_j y_i,
+\end{equation} então seja $A = [a^i_j]_{n \times n}$ a matriz de mudança de base de $e$ para $f$ e $B = [b^i_j]_{m \times m}$ a matriz de mudança de base de $y$ para $x$, então \begin{equation}
+    Tf_i = \sum_{r = 1}^n \mu^r_i y_r = \sum_{k = 1}^n \sum_{r = 1}^n \mu^r_i b^k_r x_k
+\end{equation} e assim \begin{equation}
+    Te_j = \sum_{i = 1}^n a^i_j Tf_i = \sum_{k = 1}^n \sum_{r = 1}^n \sum_{i = 1}^n b^k_r \mu^r_i a^i_j x_k.
+\end{equation} Isso mostra que $[T]_{e,x} = B[T]_{f,y}A$. Tomando $W = V$, $x = e$ e $y = f$, então $B = A^{-1}$, assim $[T]_{e,e}$ é similar a $[T]_{f,f}$. Portanto, podemos definir o \textbf{determinante} de $T$ como sendo o determinante da matriz de $T$ em alguma base, e o conceito está bem definido, pois matrizes similares possuem o mesmo determinante. O mesmo vale para o traço.
+
+\subsection{Estrutura Euclidiana, Formas Bilineares e Quadráticas}
+
+\subsubsection*{Estrutura Euclidiana}
+
+A partir de agora, tomamos $\mathbb{K} = \mathbb{R}$, ou seja, todo escalar é real. Uma \textbf{estrutura Euclidiana} em um espaço vetorial $V$ é um mapa \begin{equation}
+    \begin{split}
+        \langle \cdot, \cdot \rangle \colon V \times V &\to \mathbb{R} \\ (v,u) &\mapsto \langle v, u \rangle
+    \end{split}
+\end{equation} que satisfaz: \begin{itemize}
+    \item para todo $v \in V$ com $v \neq 0$, $\langle v, v \rangle > 0$ - \textbf{positividade} (dizemos que a função é \textbf{positivo-definida});
+    \item para todos $u, v \in V$, $\langle v, u \rangle = \langle u, v \rangle$ - \textbf{simetria};
+    \item para todos $u, v, w \in V$ e $\lambda \in \mathbb{R}$, $\langle \lambda v + u, w \rangle = \lambda \langle v, w \rangle + \langle u, w \rangle$ - \textbf{linearidade} na primeira entrada, que junto com a simetria se torna \textbf{bilinearidade}.
+\end{itemize}
+Um mapa dessa forma é chamado de \textbf{produto interno}, e um espaço com uma estrutura Euclidiana é um \textbf{espaço Euclidiano}. A \textbf{norma} de um vetor $v$ é o número $||v|| = \sqrt{\langle v, v \rangle}$. A norma representa a distância de $v$ a $0$, portanto a \textbf{distância} entre $u$ e $v$ é definida por $||u - v||$. Os próximos dois teoremas são chamados de desigualdade de Cauchy-Schwarz e desigualdade triangular.
+
+\begin{theorem}
+    Dados $u, v \in V$, temos $|\langle v, u \rangle| \leq ||v||\cdot||u||$.
+\end{theorem}
+\begin{proof}
+    Se $u = 0$, então a desigualdade é trivialmente verdadeira. Considere o mapa $q(t) = ||v + tu||^2$. Usando a bilinearidade, temos que \begin{equation}
+        q(t) = ||v||^2 + 2t\langle v, u \rangle + t^2||u||^2.
+    \end{equation} Tome $t = -\langle v, u \rangle/||u||^2$ e temos \begin{equation}
+        q(t) = ||v||^2 - \frac{\langle v, u \rangle^2}{||u||^2} \geq 0,
+    \end{equation} da onde segue o resultado.
+\end{proof}
+
+\begin{theorem}
+    Dados $u, v \in V$, temos $||v + u|| \leq ||v|| + ||u||$.
+\end{theorem}
+\begin{proof}
+    Temos \begin{equation}
+        ||v + u||^2 = ||v||^2 + 2\langle v, u \rangle + ||u||^2 \leq ||v||^2 + 2||v||\cdot||u|| + ||u||^2 = (||v|| + ||u||)^2.
+    \end{equation} Tirando a raíz dos dois lados, a desigualdade segue.
+\end{proof}
+
+Dois vetores $u$ e $v$ são \textbf{perpendiculares} ou \textbf{ortogonais} se $\langle v, u \rangle = 0$. Fica claro que, nesse caso, vale o teorema de pitágoras: $||v - u||^2 = ||v||^2 + ||u||^2$. Se $e_1, \dots, e_n$ é uma base de $V$, dizemos que ela é \textbf{ortonormmal} se \begin{equation}
+    \langle e_i, e_j \rangle = \delta^i_j = \begin{cases}
+        0, &\text{se } i \neq j, \\ 1, &\text{se } i = j.
+    \end{cases}
+\end{equation} Note que $||e_i|| = \sqrt{\langle e_i, e_i \rangle} = 1$. O principal resultado é que toda base pode ser transformada numa base ortonormal.
+
+\begin{theorem}
+    O teorema a seguir é chamado de ortonormalização de Gram-Schmidt. Dada uma base $f_1, \dots, f_n$ de $V$, existe uma outra base $e_1, \dots, e_n$ com as seguintes propriedades: \begin{enumerate}
+        \item $e_1, \dots, e_n$ é ortonormal;
+        \item $e_k$ é uma combinação linear de $f_1, \dots, f_k$ para todo $k$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Definimos $e_1 = f_1/||f_1||$. Se $e_1, \dots, e_{k-1}$ já estiverem definidos, definimos \begin{equation}
+        e_k = c\left(f_k - \sum_{j = 1}^{k-1} c_j e_j\right)
+    \end{equation} com $c_j = \langle f_k, e_j \rangle$ e $c$ escolhido de tal forma que $||e_k|| = 1$. Se $l < k$, então \begin{equation}
+        \langle e_k, e_l \rangle = c\langle f_k, e_l \rangle - c\sum_{j = 1}^{k - 1} \langle f_k, e_j \rangle \langle e_j, e_l \rangle = (c - c)\langle f_k, e_l \rangle = 0.
+    \end{equation} O caso $l > k$ é consequência do caso $l < k$ por simetria.
+\end{proof}
+
+Se $e = (e_1, \dots, e_n)$ é uma base ortonormal, $x[e] = (x^1, \dots, x^n)$ e $y[e] = (y^1, \dots, y^n)$, então fica claro que \begin{equation}
+    \langle x, y \rangle = \sum_{i = 1}^n x^i y^i \quad \text{e} \quad ||x||^2 = \sum_{i = 1}^n (x^i)^2.
+\end{equation} O resultado que segue é chamado de teorema de representação de Riesz (versão de dimensão finita).
+
+\begin{theorem}
+    Dado $\phi \colon V \to \mathbb{R}$ um covetor, existe um $v \in V$ tal que $\phi(u) = \langle u, v \rangle$. A associação $\phi \mapsto u$ é um isomorfismo linear entre $V$ e $V^*$.
+\end{theorem}
+\begin{proof}
+    Seja $e = (e_1, \dots, e_n)$ uma base ortonormal. Se $v[e] = (v^1, \dots, v^n)$, então \begin{equation}
+        \phi(u) = \sum_{i = 1}^n v^i \phi(e_i) = \sum_{i = 1}^n \langle v, e_i \rangle \phi(e_i) = \left\langle v, \sum_{i = 1}^n \phi(e_i) e_i \right\rangle.
+    \end{equation} Como o segundo vetor não depende de $v$, fica provada a primeira parte do resultado. Se $\phi(v) = \langle v, u \rangle$ e $\iota(v) = \langle v, w \rangle$, então \begin{equation}
+        (\phi + \iota)(v) = \langle v, u \rangle + \langle v, w \rangle = \langle v, u + w \rangle \quad \text{e} \quad (\lambda \phi)(v) = \lambda \langle v, u \rangle = \langle v, \lambda u \rangle,
+    \end{equation} assim a associação $\phi \mapsto u$ é linear. Se $u = 0$, então claramente $\phi = 0$, assim o mapa é injetor e, como $\dim V = \dim V^*$, é um isomorfismo.
+\end{proof}
+
+Dado um subespaço $U$ de $V$, o \textbf{complemento ortogonal} de $U$ em $V$ é o subespaço \begin{equation}
+    U^\perp = \{v \in V \mid \langle v, u \rangle = 0, \text{ para todo } u \in U\}.
+\end{equation} Essa notação pode ser ambígua com a notação para o aniquilador de $U$, mas isso é por que eles são o mesmo espaço, através da representação de Riesz.
+
+\begin{proposition}
+    Se $U$ é um subespaço de $V$, então $U \oplus U^\perp = V$.
+\end{proposition}
+\begin{proof}
+    Se $U'$ é o aniquilador, sabemos que $\dim U' = \dim U^\perp$, assim $\dim U^\perp + \dim U = \dim V$, portanto $\dim U \cap U^\perp = 0$, assim a soma é direta e o resultado está provado.
+\end{proof}
+
+Pelo resultado anterior, cada $v \in V$ se quebra unicamente em $v = x + y$ com $x \in U$ e $y \in U^\perp$. A \textbf{projeção} em $U$ é o mapa $Pv = x$.
+
+\begin{proposition}
+    O mapa $P$ é linear e $P^2 = P$.
+\end{proposition}
+\begin{proof}
+    Se $v = x + y$ e $w = r + s$ com $x, r \in U$ e $y, s \in U^\perp$, então $v + w = (x + r) + (y + s)$ e, pela unicidade da decomposição, $P(v + w) = x + r = Pv + Pw$. Além disso, $\lambda v = \lambda x + \lambda y$ e, pela unicidade da decomposição $P(\lambda v) = \lambda x = \lambda Pv$. Por fim, $P^2v = P(Pv) = Px = x$, pois $x \in U$, assim $P^2 = P$.
+\end{proof}
+
+\begin{theorem}
+    O vetor $Pv$ minimiza, em $U$, a distância até $x$.
+\end{theorem}
+\begin{proof}
+    Se $v = x + y$ com $x \in U$ e $y \in U^\perp$, dado $w \in U$ temos \begin{equation}
+        v - w = x - w + y
+    \end{equation} e, como $x - w \in U$, então $||v - w||^2 = ||x - w||^2 + ||y||^2$. Claramente o valor $||v - w||^2$ é mínimo quando $w = x$.
+\end{proof}
+
+Se $T \colon V \to W$ é um mapa entre espaços Euclidianos, então considere o transposto $T^\top \colon W^* \to V^*$. Fazendo a identificação de $W^*$ e $V^*$ com $W$ e $V$, temos um mapa $T^* \colon W \to V$, chamado de \textbf{adjunto} de $T$.
+
+\begin{proposition}
+    Se $v \in V$, $w \in W$ e $T \colon V \to W$ é linear, então $\langle Tv, w \rangle = \langle v, T^*w \rangle$. De fato, se $S \colon W \to V$ é linear e satisfaz $\langle Tv, w \rangle = \langle v, Sw \rangle$, então $S = T^*$.
+\end{proposition}
+\begin{proof}
+    Denotamos $\phi_x(v) = \langle v, x \rangle$. Se $u = T^*w$, então $\phi_u = T^\top(\phi_w)$, assim \begin{equation}
+        \langle v, T^*w \rangle = \phi_u(v) = T^\top(\phi_w)v = (\phi_w \circ T)v = \phi_w(Tv) = \langle Tv, w \rangle.
+    \end{equation}
+    Por fim, se $S$ satisfaz a igualdade, então se $u = Sw$, temos $\phi_u(v) = \phi_w(Tv) = T^\top(\phi_w)v$, assim $\phi_u = T^\top(\phi_w)$ da onde segue que $S = T^*$.
+\end{proof}
+
+O próximo passo é demonstrar algumas propriedades sobre o adjunto.
+
+\begin{proposition}
+    Se $T, S \colon V \to W$ e $R \colon W \to U$ são lineares, então \begin{equation}
+        (T + S)^* = T^* + S^*,, \quad (T^*)^* = T \quad \text{e} \quad (RT)^* = T^* R^*.
+    \end{equation} Além disso, se $T$ for um isomorfismo, então $(T^{-1})^* = (T^*)^{-1}$.
+\end{proposition}
+\begin{proof}
+    Note que \begin{equation}
+        \langle (T+S)v, u \rangle = \langle Tv, u \rangle + \langle Sv, u \rangle = \langle v, T^*u \rangle + \langle v, S^*u \rangle = \langle v, (T^* + S^*)u \rangle.
+    \end{equation} Além disso, \begin{equation}
+        \langle T^*u, v \rangle = \langle v, T^*u \rangle = \langle Tv, u \rangle = \langle u, Tv \rangle
+    \end{equation} e também temos \begin{equation}
+        \langle RTv, u \rangle = \langle Tv R^*u \rangle = \langle v, T^*R^*u \rangle.
+    \end{equation} Por fim, \begin{equation}
+        TT^{-1} = \Id_W \implies (T^{-1})^*T^* = \Id_W,
+    \end{equation} concluindo o resultado desejado.
+\end{proof}
+
+Vamos agora achar a matriz da transformação de Riesz. Se $e$ é uma base ortonormal de $V$ e $\varepsilon$ é sua base dual, então se $R_V$ é a representação de Riesz, temos que \begin{eqnarray}
+    R_V\varepsilon^j =  e_j
+\end{eqnarray} assim a matriz de $R_V$ (com respeito a essas bases) é a identidade! Segue que a matriz do mapa adjunto, com respeito a duas bases ortogonais, assim como do mapa transposto, é a matriz transposta do mapa original.
+
+Se $V$ e $W$ são espaços Euclidianos, um mapa $T \colon V \to W$ \textbf{preserva distâncias} se \begin{eqnarray}
+    ||T(v) - T(u)|| = ||v - u||
+\end{eqnarray} para todos $v, u \in V$. Mapas que preserva distâncias são sempre injetores. Um mapa bijetor que preserva distâncias é uma \textbf{isometria} entre $V$ e $W$, e nesse caso dizemos que $V$ e $W$ são \textbf{isométricos}. Uma \textbf{translação} é um mapa da forma $T_a(v) = v + a$ para algum $a \in V$ fixado. Se $S$ preserva distâncias, então se $a = -S(0)$ temos que $T = T_a \circ S$ também preserva distâncias e $T(0) = 0$.
+
+\begin{proposition}
+    Seja $T \colon V \to V$ um mapa que preserva distâncias e tal que $T(0) = 0$. Então, $T$ é linear, $T^* T = \Id_V$, $T$ é inversível, sua inversa é uma isometria e $\det(T) = \pm 1$.
+\end{proposition}
+\begin{proof}
+    Sabemos que $||T(v) - T(u)|| = ||v - u||$ para todos $u, v \in V$, assim tomando $u = 0$ temos que $||T(v)|| = ||v||$. Assim, \begin{eqnarray}
+        ||T(v)||^2 - 2\langle T(v), T(u) \rangle + ||T(u)||^2 = ||v||^2 - 2\langle v, u \rangle + ||u||^2 \implies \langle T(v), T(u) \rangle = \langle v, u \rangle.
+    \end{eqnarray} Dessa maneira, \begin{align}
+        ||T(v + u) - T(v) - T(u)|| &= ||T(v + u)||^2 + ||T(v)||^2 + ||T(u)||^2 \nonumber \\ &- 2\langle T(v + u), T(v) \rangle - 2\langle T(v + u), T(u) \rangle + 2\langle T(v), T(u)\rangle \\ &= ||v + u||^2 + ||v||^2 + ||u||^2 - 2\langle v+u, v \rangle - 2\langle v+u, u \rangle + 2\langle v,u \rangle \\ &= ||v + u - v - u|| = 0,
+    \end{align} assim $T(v + u) = T(v) + T(u)$. Além disso, \begin{align}
+        ||T(\lambda v) - \lambda T(v)|| &= ||T(\lambda v)||^2 - 2\langle T(\lambda v), \lambda T(v) \rangle + ||\lambda T(v)||^2 \\ &= ||\lambda v||^2 - 2\lambda \langle T(\lambda v), T(v) \rangle + \lambda^2||T(v)||^2 \\ &= ||\lambda v||^2 - 2\langle \lambda v, \lambda v \rangle + ||\lambda v||^2 = 2||\lambda v||^2 - 2||\lambda v||^2 = 0,
+    \end{align} assim $T(\lambda v) = \lambda T(v)$. Segue que $T$ é linear. Como é injetora, é um isomorfismo. Além disso, \begin{eqnarray}
+        ||T^{-1}(v) - T^{-1}(u)|| = ||T(T^{-1}(v)) - T(T^{-1}(u))|| = ||v - u||,
+    \end{eqnarray} portanto $T^{-1}$ é uma isometria. Por fim, \begin{eqnarray}
+        \langle v, u \rangle = \langle Tv, Tu \rangle = \langle v, T^*Tu \rangle.
+    \end{eqnarray} Como $v$ é arbitrário, $T^*Tu = u$, assim $T^*T = \Id_V$. Por fim, seja $e$ uma base ortonormal. Então, \begin{eqnarray}
+        \det(T)^2 = \det([T]_{e,e})^2 = \det([T]^\top_{e,e}[T]_{e,e}) = \det([T^*]_{e,e}[T]_{e,e}) = \det([T^*T]_{e,e}) = \det(\Id_{n \times n}) = 1,
+    \end{eqnarray} assim $\det(T)^2 = 1$, portanto $\det(T) = \pm 1$.
+\end{proof}
+
+\begin{proposition}
+    Se $T \colon V \to V$ é linear e $T^*T = \Id$, então $T$ é uma isometria.
+\end{proposition}
+\begin{proof}
+    Temos que \begin{align}
+        ||Tv - Tu||^2 &= \langle Tv - Tu, Tv - Tu \rangle = \langle T(v-u), T(v-u) \rangle \\ &= \langle v-u, T^*T(v - u) \rangle = \langle v - u, v - u \rangle = ||v - u||^2,
+    \end{align} portanto $||Tv - Tu|| = ||v - u||$.
+\end{proof}
+
+Se $M$ é uma matriz $n \times n$ que satisfaz $M^\top M = \Id$, dizemos que $M$ é ortogonal. Fica claro que toda isometria pode ser representada, em uma base ortonormal, por uma matriz ortogonal. Por outro lado, a Proposição anterior mostra que toda matriz ortogonal define uma isometria $\mathbb{R}^n \to \mathbb{R}^n$. O conjunto de todas as matrizes ortogonais $n \times n$ é denotado por $O(n)$ e chamade de \textbf{grupo ortogonal}. As matrizes de $O(n)$ com determinante $1$ formam o \textbf{grupo ortogonal especial}, denotado por $SO(n)$. O nome ortogonal é bem justificado.
+
+\begin{proposition}
+    As colunas de uma matriz ortogonal são ortonormais (como vetores de $\mathbb{R}^n)$. O mesmo vale para suas linhas.
+\end{proposition}
+\begin{proof}
+    Se $e_1, \dots, e_n$ são as colunas de $M$, então são as linhas de $M^\top$. Se $c^i_j$ é uma entrada de $M^\top M$, sabemos que $c^i_j = \langle e_i, e_j \rangle$ (aqui, o produto interno é o usual de $\mathbb{R}^n$, em que a base canônica é ortonormal). Porém, como $c^i_j = \delta^i_j$, segue que $e_1, \dots, e_n$ são ortonormais.
+\end{proof}
+
+\subsubsection*{Formas Bilineares e Quadráticas}
+
+Uma \textbf{forma bilineear} é um mapa $A \colon V \times V \to \mathbb{K}$ que é linear em cada entrada, isso é, \begin{eqnarray}
+    A(\lambda v + u, w) = \lambda A(v,w) + A(u,w) \quad \text{e} \quad A(v, \lambda w + u) = \lambda A(v, w) + A(v, u).
+\end{eqnarray} Se $v, u \in \mathbb{R}^n$ e $M$ é uma matriz $n \times n$, fica claro que, considerando $v, u$ como matrizes $n \times 1$, o mapa $A(v,u) = v^\top M u$ é uma forma bilinear. Agora, se $v = (v^1, \dots, v^n)$ e $u = (u^1, \dots, u^n)$ e $e$ é a base canônica de $\mathbb{R}^n$, então \begin{align}
+    A(v,u) = A\left(\sum_{i = 1}^n v^i e_i, \sum_{j = 1}^n u^j e_j\right) = \sum_{i = 1}^n \sum_{j = 1}^n v^i A(e_i, e_j) u^j.
+\end{align} A matriz $G = [A(e_i, e_j)]_{n \times n}$ é a \textbf{matriz da forma bilinear} $A$ e fica claro que $A(v, u) = v^\top G u$. Se essa matriz for simétrica, a forma bilinear é simétrica, afinal $A(u,v) = u^\top G v = u^\top G^\top v = v^\top G u = A(v,u)$. Por fim, dizemos que uma matriz $G$ é positivo-definida se a forma bilinear resultante é positivo-definida. Assim, segue o resultado.
+
+\begin{proposition}
+    Uma forma bilinear em $\mathbb{R}^n$ é um produto interno se, e somente se, sua matriz é simétrica e positivo-definida.
+\end{proposition}
+
+O caso geral, quando a forma bilinear está definida sobre um espaço vetorial qualquer, depende de base. Se $e$ é uma base de $V$, $v[e] = (v^1, \dots, v^n)$ e $u[e] = (u^1, \dots, u^n)$, então a matriz de $A$, dada por $G_e = [A(e_i,e_j)]_{n \times n}$ depende da base e $A(v, u) = v[e]^\top G_e u[e]$. O resultado análogo vale no caso geral.
+
+\begin{proposition}
+    Uma forma bilinear é um produto interno se, e somente se, uma de suas matrizes (e por consequência todas elas), é simétrica e positivo-definida.
+\end{proposition}
+
+Se $f$ é outra base de $V$, seja $M$ a matriz de mudança da base $e$ para a base $f$. Temos $v[f] = Mv[e]$ e $u[f] = Mu[e]$. Assim, \begin{eqnarray}
+    A(v,u) = v[f]^\top G_f u[f] = v[e]^\top M^\top G_f M u[e],
+\end{eqnarray} assim $G_e = M^\top G_f M$.
+
+Dada $A$ uma forma bilinear simétrica, a associação $Q(v) = A(v,v)$ é uma \textbf{forma quadrática}. Dizemos que $A$ é a \textbf{forma polar} de $Q$.
+
+\begin{proposition}
+    A forma polar está unicamente determinada pela forma quadrática.
+\end{proposition}
+\begin{proof}
+    Como $A$ é bilinear e simétrica, então $A(x + y, x + y) = A(x,x) + A(y,y) + 2A(x,y)$, então \begin{equation}
+        A(x,y) = \frac{Q(x+y) - Q(x) - Q(y)}{2}.
+    \end{equation}
+\end{proof}
+
+Uma forma quadrática é \textbf{positivo-definida} se $Q(x) > 0$ sempre que $x \neq 0$. Fica claro que uma forma quadrática é positivo-definida se, e somente se, sua forma polar é positivo-definida.
+
+\begin{proposition}
+    Se $e$ é uma base de $V$ e $M$ é uma matriz inversível, então existe uma base $f$ de $V$ tal que $M$ é a matriz de mudança da base $e$ para a base $f$.
+\end{proposition}
+\begin{proof}
+    Se $M = [m^i_j]_{n \times n}$, então definimos \begin{equation}
+        f_j = m^1_j e_1 + \cdots + m^n_j e_n.
+    \end{equation} Vamos verificar que é uma base, verificando a independência linear. Considere a combinação linear \begin{equation}
+        \lambda^1 f_1 + \cdots + \lambda^n f_n = 0.
+    \end{equation} Podemos reescrever essa expressão como \begin{equation}
+        (m^1_1 \lambda^1 + \cdots + m^1_n \lambda^n) e_1 + \cdots + (m^n_1 \lambda^1 + \cdots + m^n_n \lambda^n) e_n = 0.
+    \end{equation} Pela independência linear, isso é equivalente a um sistema homogêneo cujas incógnitas são $\lambda^1, \dots, \lambda^n$ e $M$ é matriz dos coeficientes. Como $M$ é inversível, a solução é única e portanto $\lambda^1 = \cdots = \lambda^n = 0$, mostrando que os $f_i$ formam base.
+\end{proof}
+
+\begin{corollary}
+    Se $T \colon V \to \mathbb{R}$ é linear e $T(v^1, \dots, v^n)$ é a representação de $T$ usando uma base $e$ de $V$, se definimos novas coordenadas $w^1, \dots, w^n$ em função linear e inversível de $v^1, \dots, v^n$, então existe uma base $f$ de $V$ tal que $T(w^1, \dots, w^n)$ é a representação de $T$ usando as cooordenadas dadas por $f$.
+\end{corollary}
+\begin{proof}
+    Como os $w^j$ estão em função linear dos $v^i$, podemos escrever \begin{equation}
+        w^j = a^j_1 v^1 + \cdots + a^j_n v^n.
+    \end{equation} Dizer que a mudança é inversível é equivalente a dizer que a matriz $A = [a^i_j]$ é inversível, e assim pela Proposição anterior existe uma base $f$ tal que $A$ é a mudança da base $e$ para a base $f$. Ou seja, dado $v \in V$, $v[f] = Av[e]$, isso é, $v[f] = (w^1, \dots, w^n)$ e o resultado está provado.
+\end{proof}
+
+Antes de prosseguirmos, definimos que uma matriz $A = [a^i_j]_{n \times n}$ é \textbf{diagonal} se $a^i_j = 0$ sempre que $i \neq j$.
+
+\begin{theorem}
+    Se $Q$ é uma forma quadrática em $V$ (de dimensão $n$), então existe uma base de $V$ tal que, nas coordenadas dessa base, \begin{equation}
+        Q(v) = \lambda_1 (v^1)^2 + \cdots + \lambda_n (v^n)^2
+    \end{equation} para $\lambda_i \in \mathbb{K}$.
+\end{theorem}
+\begin{proof}
+    Considere uma representação em coordenadas de $Q$: \begin{equation}
+        Q(v) = \sum_{r = 1}^n \sum_{s = 1}^n v_r g^r_s v^s
+    \end{equation} (aqui, $v_i = v^i$ e a mudança de lugar no índice é feita pois em coordenadas $Q(v) = v^\top G v$). Podemos supor que existe $k$ tal que $g^k_k \neq 0$. Afinal, se não existe, então necessariamente algum $g^i_j \neq 0$, e assim podemos considerar a mudança de coordenadas \begin{equation}
+        v^i = w^i + w^j, \quad v^j = w^i - w^j \quad \text{e} \quad v^k = w^k, k \neq i,j,
+    \end{equation} que é claramente dada por uma mudança de base, já que é linear e inversível. Então, temos \begin{equation}
+        2 v_i g^i_j v^j = 2 g^i_j((v_i)^2 - (w^j)^2)
+    \end{equation} e, como esses são os únicos termos em que aparecem $(v_i)^2$ e $(v^j)^2$ (já que $g^i_i = g^j_j = 0$), então seus coeficientes são não nulos e chegamos na conclusão desejada.
+
+    Agora assumindo que algum $g^k_k$ é não nulo, após uma reordenação da base podemos assumir que $g^1_1 \neq 0$. Agora, juntamos os termos em que aparece $v^1$ ou $v^1$: \begin{equation}
+        v_1 g^1_1 v^1 + 2v_1g^1_2v^2 + \cdots + 2v_1 g^1_n v^n
+    \end{equation} e, em seguida, completamos o quadrado para obter \begin{equation}
+        v_1 g^1_1 v^1 + 2v_1g^1_2v^2 + \cdots + 2v_1 g^1_n v^n = \frac{1}{g^1_1}(g^1_1 v^1 + \cdots + g^1_n v^n)^2 - B,
+    \end{equation} onde $B$ é formado por somas e multiplicações dos termos $g^1_2 v^2, \dots, g^1_n v^n$. Assim, podemos fazer essa substiuição em $Q$ para obtermos \begin{equation}
+        Q(v) = \frac{1}{g^1_1}(g^1_1 v^1 + \cdots g^1_n v^n)^2 + \sum_{r = 2}^n \sum_{s = 2}^n v_r h^r_s v^s,
+    \end{equation} em que os coeficientes $h^r_s$ são os coeficientes $g^r_s$ modificados pela adição de $B$. Agora, fazemos a mudança de coordenadas \begin{equation}
+        w^1 = g^1_1 v^1 + \cdots + g^1_n v^n \quad \text{e} \quad w^k = v^k, k \neq 1.
+    \end{equation} Fica claro que essa mudança é linear e inversível pois $g^1_1 \neq 0$, assim vem de uma mudança de bases e portanto podemos realizá-la sem problemas. Nessa nova mudança, temos \begin{equation}
+        Q(v) = \frac{1}{g^1_1} (w^1)^2 + \sum_{r = 2}^n \sum_{s = 2}^n w_r h^r_s w^s
+    \end{equation} Se a soma restante em $Q$ for nula, o resultado está provado. Caso contrário, repetimos o processo anterior (sempre mantendo o primeiro vetor da base fixado durante as mudanças de variáveis, para garantir que o trabalho anterior não seja alterado), e eventualmente chegaremos no formato desejado.
+\end{proof}
+
+Fica claro que, após uma mudança de coordenadas razoável, podemos supor que os coeficientes $\lambda_i$ no Teorema anterior são todos $\pm 1$ ou $0$. Dessa forma, fica evidente a próxima pergunta: o número de coeficienntes positivos, negativos e nulo, é sempre fixo independente da mudança de base?
+
+\begin{lemma}
+    Se $U$ e $W$ são subespaços de $V$ e $\dim U + \dim W > \dim V$, então existe $v \neq 0$ com $v \in U \cap W$.
+\end{lemma}
+\begin{proof}
+    De fato, \begin{equation}
+        \dim U \cap W = \dim U + \dim W - \dim V > 0.
+    \end{equation}
+\end{proof}
+
+O teorema a seguir é chamado de lei da inércia de Sylvester.
+
+\begin{theorem}
+    Os números de coeficientes positivos e negativos em duas formas canônicas de uma forma quadrática sempre são os mesmos.
+\end{theorem}
+\begin{proof}
+    Considere duas bases $e$ e $f$ de $V$ e as representações em coordenadas $Q$ nessas duas bases, respectivamente: \begin{equation}
+        \begin{split}
+            Q(v) = (v^1_1)^2 + \cdots + (v^p_1)^2 - &(v^{p+1}_1)^2 + \cdots + (v^{p + q}_1)^2 \quad \text{e} \\ &Q(v) = (w^1)^2 + \cdots + (w^r)^2 - (w^{r+1})^2 + \cdots + (w^{r + s})^2.
+        \end{split}
+    \end{equation} Queremos mostrar que $p = r$ e $q = s$. Suponha, por absurdo, que $p > r$. Sejam $U$ o subespaço gerado por $e_1, \dots, e_p$ e $W$ o subespaço gerado por $f_{r + 1}, \dots, f_n$. Temos \begin{equation}
+        \dim U + \dim W = p + n - r > n,
+    \end{equation} assim existe $x \in U \cap W$. Porém, fica claro que $Q(x) > 0$ (quando olhamos para a representação na base $e$) e $Q(x) \leq 0$ (quando olhamos para a representação na base $e$). Concluímos então que $p \leq r$. Porém, o argumento contrário diz que $r \leq p$, assim $p = r$. Um argumento similar mostra que $q = s$ e o resultado está provado.
+\end{proof}
+
+O \textbf{posto} de uma forma quadrática é o número de coeficientes não nulos em uma forma canônica. Pelo teorema anterior, esse número está bem definido. O \textbf{núcleo} de uma forma bilinear $A$ é o conjunto de todos os vetores perpendiculares a todos os outros vetores, isso é, \begin{equation}
+    \ker A = \{w \in V \mid A(v,w) = 0 \text{ para todo } v \in V\}.
+\end{equation}
+Fica claro que o posto de uma forma quadrática pode ser definido como o posto de uma de suas matrizes na forma canônica, afinal, elas são diagonais e o número de linhas não nulas é precisamente o número de coeficientes não nulos na forma canônica.
+
+\subsubsection*{Bônus: Espaços Complexos}
+
+A partir de agora, $\mathbb{K} = \mathbb{C}$. Um mapa $T \colon V \to W$ é \textbf{antilinear} se $T(\lambda v + w) = \overline{\lambda}T(v) + T(w)$. Uma \textbf{forma sesquilinear} é um mapa \begin{equation}
+    \begin{split}
+        A \colon V \times V &\to \mathbb{K} \\ (v, u) &\mapsto \langle v, u \rangle
+    \end{split}
+\end{equation} que é antilinear na primeira entrada e linear na segunda entrada. Um \textbf{produto interno} em $V$ é uma forma bilinear $\langle -,- \rangle$ positivo-definida e que satisfaz a \textbf{condição Hermitiana}, isso é, \begin{equation}
+    \langle u,v \rangle = \overline{\langle v, u \rangle}.
+\end{equation}
+Perceba que se estamos sobre os reais, essa condição é precisamente a simetria. Além disso, temos $\langle u, u \rangle = \overline{\langle u, u \rangle}$, assim $\langle u, u \rangle \in \mathbb{R}$ e portanto a condição de positividade faz sentido. Assim como no caso real, um \textbf{espaço Euclidiano} é um espaço vetorial equipado com um produto interno. As noções de ortogonalidade e de base ortonormal são análogas ao caso real. Além disso, o processo de ortonormalização de Gram-Schmidt funciona também em espaços complexos. Se $e_1, \dots, e_n$ é uma base ortonormal, $v[e] = (v^1, \dots, v^n)$ e $u[e] = (u^1, \dots, u^n)$, então \begin{equation}
+    \langle v, u \rangle = \overline{v_1}u^1 + \cdots + \overline{v_n}u^n
+\end{equation} (trocamos a direção dos índices para o vetor $v$, como é padrão para falar de formas bilineares, quadráticas e produtos internos).
+
+Considerando agora uma forma sesquilinear qualquer $A$, em coordenadas podemos, assim como no caso real, expressá-la como $A(v, u) = v^* M u$ (aqui, $v^*$ é a matriz linha obtida ao transpor $v$ e conjugar todas as suas entradas) e dizemos que $M$ é a \textbf{matriz de $A$} na base que determina as coordenadas. Definimos similarmente uma \textbf{forma quadrática} a partir de uma forma sesquilinear por $Q(v) = A(v,v)$. Da mesma maneira que antes, chamamos $A$ de \textbf{forma polar} de $Q$, e esta está unicamente determinada por $Q$ através da fórmula \begin{equation}
+    A(v, u) = \frac{Q(v+u) + iQ(v+iu) - Q(v-u) - iQ(v-iu)}{4}
+\end{equation} Se a forma polar $A$ é Hermitiana, então $Q$ só possui valores reais. Lembramos que, no caso real, se $e$ e $f$ são bases do espaço, então \begin{equation}
+    A(v,u) = v[e]^\top G_e v[e] = v[f]^\top M^\top G_e M v[f]
+\end{equation} e assim $G_f = M^\top G_e M$ em que $M$ é a matriz de mudança da base $f$ para a base $e$. Um procedimento análogo funciona no caso complexo, porém, nesse caso temos \begin{equation}
+    A(v,u) = v[e]^* G_e u[e] = v[f]^* M^* G_e M u[f]
+\end{equation} e assim $G_f = M^* G_e M$. Assim como no caso real, valem os teoremas de forma canônica e da inércia de Sylvester, com demonstrações muito parecidas.
+
+\begin{theorem}
+    Seja $A$ uma forma sesquilinear Hermitiana e considere sua forma quadrática $Q$. Então existe uma base de $V$ na qual, em coordenadas, a forma biilinear é dada por \begin{equation}
+        Q(v) = \lambda_1 |v^1|^2 + \cdots + \lambda_n |v^n|^2,
+    \end{equation} com $\lambda_1, \dots, \lambda_n \in \mathbb{R}$.
+\end{theorem}
+
+\begin{theorem}
+    O número de coeficientes positivos e negativos em uma forma canônica de uma forma quadrática independe da base.
+\end{theorem}
+
+\subsection{Teoria Espectral}
+
+\subsubsection*{Teoria Espectral}
+
+Nessa seção, $\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$, a menos que seja dito o contrário em alguma situação específica. Seja $T \colon V \to V$ um mapa linear. Um \textbf{autovetor} de $T$ é uma direção fixada, isso é, um vetor $v \in V$ não nulo tal que $Tv = \lambda v$ para algum $\lambda \in \mathbb{K}$. O valor $\lambda$ é chamado de \textbf{autovalor} de $T$ correspondente a $v$.
+
+\begin{proposition}
+    Todo operador linear em um espaço complexo possui autovetor.
+\end{proposition}
+\begin{proof}
+    Seja $v \in V$ com $v \neq 0$ e considere os vetores \begin{equation}
+        v, Tv, T^2v, \dots, T^nv
+    \end{equation} onde $n = \dim V$. Como $n+1$ vetores em um espaço de dimensão $n$ sempre são linearmente dependentes, existe uma combinação linear não trivial \begin{equation}
+        \sum_{j = 0}^n c_j T^j v = 0.
+    \end{equation} Se $p(t) = c_0 + c_1 t + \cdots + c_n t^n$, reescrevemos a combinação linear por $p(T)v = 0$. Se $k = \deg(p(t))$, então podemos fatorar \begin{equation}
+        p(t) = c_k (t - a_1) \cdots (t - a_k)
+    \end{equation} e assim \begin{equation}
+        p(T)v = c_k (T - a_1\Id) \cdots (T - a_k\Id)v = 0.
+    \end{equation} Como $v \neq 0$, então $p(T)$ não é injetor, assim existe algum $j$ com $T - a_j\Id$ não injetor, da onde segue que existe $w$ não nulo tal que $(T - a_j\Id)w = 0$. Fica claro que $w$ é autovetor de $T$ com autovalor $a_j$.
+\end{proof}
+
+Vamos agora demonstrar o mesmo fato utilizando um resultado muito mais poderoso.
+
+\begin{proposition}
+    Seja $T \colon V \to V$ linear ($V$ pode ser real ou complexo). Então, $\lambda \in \mathbb{K}$ é autovalor se, e somente se, for raíz do polinômio \begin{equation}
+        p(\lambda) = \det(T - \lambda\Id).
+    \end{equation} Chamamos $p$ de \textbf{polinômio característico} de $T$.
+\end{proposition}
+\begin{proof}
+    Se $\lambda$ é autovalor, então existe $v \neq 0$ tal que $(T - \lambda \Id)v = 0$, assim $T - \lambda \Id$ não é injetor, portanto não é invertível e assim $\det(T - \lambda \Id) = 0$. Por outro lado, se $\det(T - \lambda\Id) = 0$, então $T - \lambda \Id$ não é injetor e assim existe $v \in V$ não nulo com $(T - \lambda \Id)v = 0$, assim $\lambda$ é autovalor.
+\end{proof}
+
+Fica claro então que, no caso real, podem não existir autovalores em dimensão par, já que polinômios reais de grau par não necessariamente possuem raízes reais. No caso complexo, sempre existirão $n$ autovalores, não necessariamente distintos.
+
+Da mesma maneira que toda matriz real pode ser tratada como uma matriz complexa, todo espaço vetorial real da origem a um espaço vetorial complexo pelo processo de \textbf{complexificação}. Se $V$ é um espaço vetorial real, então consideramos o espaço vetorial $V(\mathbb{C})$ que, como conjunto, é $V^2$, mas que é munido das operações \begin{equation}
+    (u_1, v_1) + (u_2, v_2) = (u_1 + u_2, v_1 + v_2) \quad \text{e} \quad (a + bi)(u,v) = (au - bv, bu + av).
+\end{equation} Se $e_1, \dots, e_n$ é base de $V$, então $(e_1, 0), \dots, (e_n, 0)$ é base de $V(\mathbb{C})$. De fato, se \begin{equation}
+    (a^1 + ib^1) (e_1,0) + \cdots + (a^n + ib^n) (e_n, 0) = (0,0)
+\end{equation} então \begin{equation}
+    (a^1 e_1, b^1 e_1) + \cdots + (a^n e_n, b^n e_n) = (0,0)
+\end{equation} e assim \begin{equation}
+    (a^1 e_1 + \cdots + a^n e_n, b^1 e_1 + \cdots + b^n e_n) = (0,0)
+\end{equation} portanto $a^i = b^i = 0$ para todo $i$ pela independência linear dos $e_i$. Se $w = (u,v) \in \mathbb{C}$, então podemos escrever \begin{equation}
+    u = \lambda^1 e_1 + \cdots + \lambda^n e_n \quad \text{e} \quad v = \eta^1 e_1 + \cdots + \eta^n e_n,
+\end{equation} assim \begin{equation}
+    (\lambda^1 + i\eta^1) (e_1, 0) + \cdots + (\lambda^n + i\eta^n)(e_n, 0) = (u,v),
+\end{equation} portanto os vetores $(e_i, 0)$ formam base. Isso da origem ao principal resultado, em termos de teoria espectral, da complexificação:
+
+\begin{proposition}
+    Se $T \colon V \to V$ é linear, então a extensão natural \begin{equation}
+        \begin{split}
+            T(\mathbb{C}) \colon V(\mathbb{C}) &\to V(\mathbb{C}) \\ (u,v) &\mapsto (Tu, Tv)
+        \end{split}
+    \end{equation} é linear. Mais que isso, se $e = \{e_1, \dots, e_n\}$ é uma base e $e(\mathbb{C}) = \{(e_1, 0), \dots, (e_n, 0)\}$, então $[T]_{e,e} = [T(\mathbb{C})]_{e(\mathbb{C}),e(\mathbb{C})}$.
+\end{proposition}
+\begin{proof}
+    A linearidade é óbvia. A parte importante aqui é a segunda. Seja \begin{equation}
+        Te_j = \sum_{i = 1}^n a^i_j e_i.
+    \end{equation} Então \begin{equation}
+        T(\mathbb{C})(e_j, 0) = (Te_j, 0) = \left(\sum_{i = 1}^n a^i_j e_i, 0\right) = \sum_{i = 1}^n (a^i_j e_i, 0) = \sum_{i = 1}^n a^i_j (e_i, 0),
+    \end{equation} da onde segue o resultado.
+\end{proof}
+
+O teorema acima é a versão ``sem coordenadas'' do fato de que toda matriz real pode ser considerada como uma matriz complexa. Se $V$ é um espaço complexo, definimos $V(\mathbb{C}) = V$.
+
+\begin{lemma}
+    Os autovalores reais de $T$ são autovalores de $T(\mathbb{C})$, com as mesmas multiplicidades algébricas.
+\end{lemma}
+\begin{proof}
+    Os polinômios característicos coincidem, afinal, o determinante não depende da escolha da base e, como vimos, existem bases em que as matrizes de $T$ e $T(\mathbb{C})$ coincidem.
+\end{proof}
+
+\begin{proposition}
+    Se $T \colon V \to V$ é linear ($V$ pode ser real ou complexo), então $\det(T)$ é o produto dos autovalores de $T(\mathbb{C})$ e $\tr T$ é a soma dos autovalores de $T(\mathbb{C})$.
+\end{proposition}
+\begin{proof}
+    Seja $p(\lambda)$ o polinômio característico de $T(\mathbb{C})$ (e também de $T$), então se $A = [a^i_j]$ é a matriz de $T$ para alguma base, temos \begin{equation}
+        p(\lambda) = \sum_{\sigma \in S_n} (-1)^\sigma (a^1_{\sigma(1)} - \lambda \delta^1_{\sigma(1)}) \cdots (a^n_{\sigma(n)} - \lambda \delta^n_{\sigma(n)}).
+    \end{equation} Dessa maneira, o termo livre de $p(\lambda)$ é \begin{equation}
+        p(0) = \sum_{\sigma \in S_n} (-1)^\sigma a^1_{\sigma(1)} \cdots a^n_{\sigma(n)} = \det(A).
+    \end{equation} Mais ainda, como é impossível que apenas um $\delta^i_{\sigma(i)}$ seja nulo, então o único termo que contribui para o coeficiente de $t^{n-1}$ é \begin{equation}
+        (a^1_1 - \lambda) \cdots (a^n_n - \lambda)
+    \end{equation} Dessa maneira, os elementos da diagonal de $A$ são as raízes desse polinômio e, pelas relações de Girard, segue que o coeficiente de $t^{n-1}$ é $(-1)^{n-1} \tr(A)$.
+\end{proof}
+
+Agora, começamos com o primeiro resultado relevante para diagonalizar transformações lineares:
+
+\begin{proposition}
+    Autoespaços correspondentes a autovalores diferentes estão em soma direta.
+\end{proposition}
+\begin{proof}
+    Vamos proceder por indução na quantidade de autovalores. Com $1$ autoespaço, não há nada a provar. Se $V_1, \dots, V_k$ são autoespaços dos autovalores $\lambda^1, \dots, \lambda^k$ (todos diferentes), então basta mostrar que se $v_i \in V_i$ são tais que $v_1 + \cdots + v_k = 0$, então todo $v_i = 0$. De fato, se $v_1 + \cdots + v_k = 0$, então $v_1 + \cdots + v_{k-1} \in V_k$. Dessa maneira, podemos aplicar $T$ de duas maneiras diferentes nessa soma, para obtermos \begin{equation}
+        T(v_1 + \cdots + v_{k-1}) = \lambda^1 v_1 + \cdots + \lambda^{k-1} v_{k-1} \quad \text{e} \quad T(v_1 + \cdots + v_{k-1}) = \lambda^k v_1 + \cdots + \lambda^k v_{k-1},
+    \end{equation} assim segue que \begin{equation}
+        (\lambda^k - \lambda^1) v_1 + \cdots + (\lambda^k - \lambda^{k-1}) v_{k-1} = 0.
+    \end{equation} Pela hipótese de indução, isso significa que $(\lambda^k - \lambda^i) v_i = 0$ para todo $i = 1, \dots, k-1$. Commo $\lambda^k \neq \lambda^i$, temos $v_i = 0$ Dessa forma, $v_k = 0$ e o resultado segue.
+\end{proof}
+
+\begin{corollary}
+    Se um mapa $T \colon V \to V$ possui $n = \dim V$ autovalores distintos, então existe uma base de autovetores.
+\end{corollary}
+
+\begin{proposition}
+    A matriz de $T \colon V \to V$ com respeito a uma base de autovetores é diagonal.
+\end{proposition}
+\begin{proof}
+    De fato, se $e_1, \dots, e_n$ é uma base de autovetores, então \begin{equation}
+        Te_j = \lambda_j^j e_j
+    \end{equation} e assim a matriz de $T$ é diagonal, com a entrada $(i,i)$ sendo o autovalor de $e_i$.
+\end{proof}
+
+Por conta do resultado acima, dizemos que uma transformação $T \colon V \to V$ é \textbf{diagonalizável} se existe uma base de autovetores. As matrizes de $T$ em bases diferentes são semelhantes. Por conta disso, definimos que uma matriz $M$ é \textbf{diagonalizável} se for semelhante a uma matriz diagonal.
+
+Com o resultado anterior, fica claro o processo de diagonalizar uma matriz: se $M$ é uma matriz que possui base de autovetores, então o resultado anterior diz que a matriz da transformação $\mathbb{C}^n \to \mathbb{C}^n$ dada por $x \mapsto Mx$, na base de autovetores de $M$, é diagonal. Porém, $M$ é a matriz dessa transformação na base canônica, portanto temos \begin{equation}
+    P^{-1}MP = D
+\end{equation}, em que $D$ é diagonal (a matriz de $x \mapsto Mx$ na base de autovetores) e $P$ é a matriz de mudança da base de autovetores para a base canônica (suas colunas são os autovetores escritos em coordenadas canônicas). O próximo passo é falar de três resultados centrais para a teoria de transformações lineares. O primeiro deles se chama Teorema do Mapeamento Espectral.
+
+\begin{theorem}
+    Se $q(t)$ é um polinômio e $T \colon V \to V$ é linear, então $\lambda$ é um autovalor de $T$ se, e somente se, $q(\lambda)$ é autovalor de $q(T)$. Além disso, os autoespaços de $\lambda$ para $T$ e $q(\lambda)$ para $q(T)$ coincidem.
+\end{theorem}
+\begin{proof}
+    Seja $q(t) = c_n t^n + \cdots + c_1 t + c_0$. Se $\lambda$ é autovalor de $T$, então dado $v \in V$ autovetor de $T$ com autovalor $\lambda$ temos \begin{align}
+        q(T)v &= (c_n T^n + \cdots + c_1 T + c_0\Id)v = c_n T^nv + \cdots + c_1 Tv + c_0 v \\ &= c_n \lambda^n v + \cdots + c_1 \lambda v + c_0 v = (c_n \lambda^n + \cdots + c_1 \lambda + c_0)v = q(\lambda)v.
+    \end{align} Por outro lado, se $\lambda$ é autovalor de $q(T)$, vamos mostrar que existe $\eta$ autovalor de $T$ com $\lambda = q(\eta)$. De  fato, a transformação linear $q(T) - \lambda\Id$ não é invertível. Fatorando $q(t) - b$ sobre os complexos, temos \begin{equation}
+        q(t) - \lambda = c(t - r_1) \cdots (t - r_n)
+    \end{equation} onde $n = \dim V$. Dessa maneeira, podemos aplicar essa versão fatorada em $T$ para obtermos \begin{equation}
+        q(T) - \lambda\Id = c(T - r_1\Id) \cdots (T - r_n\Id).
+    \end{equation} Segue então que pelo menos uma das transformações $T - r_i\Id$ não é invertível, ou seja, que algum $r_i$ é autovalor de $T$. Como $r_i$ é raíz de $q(t) - \lambda$, segue que $q(r_i) = \lambda$ e a prova está completa.
+\end{proof}
+
+O próximo Teorema é conhecido como Teorema de Cayley-Hamilton. Antes de prová-lo, precisamos de um Lema.
+
+\begin{lemma}
+    Sejam $P$ e $Q$ dois polinômios com coeficientes sendo transformações lineares: \begin{equation}
+        P(t) = \sum_{j = 1}^n P_j t^j \quad \text{e} \quad Q(t) = \sum_{k = 1}^m Q_k t^k.
+    \end{equation} O produto $R = PQ$ é então dado por \begin{equation}
+        R(t) = \sum_{l = 1}^{n + m} R_l t^l \quad \text{com} \quad R_l = \sum_{j + k = l} P_jQ_k.
+    \end{equation} Então, se $T$ comuta com todos os cooeficientes de $Q$, temos $P(T)Q(T) = R(T)$.
+\end{lemma}
+\begin{proof}
+    De fato, temos \begin{equation}
+        R(T) = \sum_{l = 1}^{n + m} R_lT^l = \sum_{l = 1}^{n+m} \sum_{j + k = l} P_jQ_kT^l = \sum_{l = 1}^{n+m} \sum_{j + k = l} P_jT^jQ_kT^k = P(T)Q(T).
+    \end{equation}
+\end{proof}
+
+\begin{theorem}
+    Se $T \colon V \to V$ é linear e $q(t)$ é seu polinômio característico, então $q(T) = 0$.
+\end{theorem}
+\begin{proof}
+    Primeiro assuma que $V$ é complexo e que $T$ possui autovalores distintos. Então, $T$ possui base de autovetores $e_1, \dots, e_n$ com autovalores $\eta^1, \dots, \eta^n$. Se $v = \lambda^1 e_1 + \cdots + \lambda^n e_n$, então \begin{equation}
+        q(T)v = \lambda^1 q(\eta^1) e_1 + \cdots + \lambda^n q(\eta^n) e_n = 0,
+    \end{equation} pois $q(\eta^i) = 0$ para todo autovalor $\eta^i$. O próximo passo é generalizar o resultado para um mapa linear qualquer. Utilizando o Lema anterior, tome \begin{equation}
+        Q(t) = T - t\Id \quad \text{e} \quad P(t) = q(t) (T - t\Id)^{-1}.
+    \end{equation} Não é difícil observar que $P(t)$ é uma matriz com entradas polinomiais (de fato, $P(t)$ é uma matriz que, em suas entradas, possui múltiplos dos determinantes de algumas submatrizes de $T - t\Id$, portanto suas entradas são polinomiais, já que determinantes são polinômios). Mais ainda, $T$ comuta com $T$ e $-\Id$, assim do Lema anterior temos que \begin{equation}
+        P(t)Q(t) = q(t)\Id \implies P(T)Q(T) = q(T),
+    \end{equation} mas $Q(T) = 0$ da onde segue que $q(T) = 0$.
+
+    Por fim, se $V$ é um espaço real, então considere $T(\mathbb{C}) \colon V(\mathbb{C}) \to V(\mathbb{C})$ e note que $T(\mathbb{C})$ é raíz do polinômio característico de $T$, pelo caso anterior. Assim, $q(T(\mathbb{C})) = 0$. Se $q(t) = c_n t^n + \cdots + c_1 t + c_0$ então \begin{align}
+        (0,0) &= q(T(\mathbb{C}))(v,0) = c_n T(\mathbb{C})^n(v,0) + \cdots + c_1 T(\mathbb{C})(v,0) + c_0(v,0) \\ &= c_n(T^nv,0) + \cdots + c_1(Tv,0) + c_0(v,0) = (c_n T^n v + \cdots + c_1 Tv + c_0v, 0) = (q(T)v,0)
+    \end{align} Dessa forma, $q(T)v = 0$ e assim $q(T) = 0$ pela arbitrariedade de $v$.
+\end{proof}
+
+O terceiro resultado principal, o Teorema Espectral, que encerra essa seção, depende da definição do que chamamos de \textbf{autovetor generalizado}, que é um vetor $v \neq 0$ tal que, para algum $m \in \mathbb{Z}_{>1}$, $(T - \lambda\Id)^m v = 0$. O número $\lambda$ é o \textbf{autovalor generalizado} de $v$. Os três lemas que seguem serão utilizados na demonstração do Teorema Espectral.
+
+\begin{lemma}
+    Se $p$ e $q$ são polinômios com coeficientes complexos sem um zero em comum, então existem polinômios $a$ e $b$ tais que $ap + bq = 1$.
+\end{lemma}
+\begin{proof}
+    Seja $\mathcal{I}$ o conjunto de todos os polinômios da forma $ap + bq$. Entre eles existe um polinômio não nulo de menor grau, que chamaremos de $d$. Note que $d$ divide $p$ e $q$, pois caso contrário, se $r$ é o resto da divisão de $p$ por $d$, então $r = p - md$ é da forma $ap + bq$, e tem grau menor que $d$, o que é uma contradição. Como $d$ divide $p$ e $q$, e eles não tem zeros comuns, então $d$ tem grau $0$. Se $d(t) = k \neq 0$, tomamos $d' = d/k \in \mathcal{I}$ e o resultado está provado.
+\end{proof}
+
+\begin{lemma}
+    Sejam $p$ e $q$ polinômios com coeficientes complexos sem um zeero em comum, então se $T \colon V \to V$ é uma operador linear em um espaço complexo $V$, temos \begin{equation}
+        \ker p(T) \oplus \ker q(T) = \ker p(T)q(T).
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    Sejam $a$ e $b$ polinômios com $ap + bq = 1$. Temos que $a(T)p(T) - b(T)q(T) = \Id$. Deixando ambos os lados agirem em um vetor $v$, obtemos \begin{equation}
+        a(T)p(T)v - b(T)q(T)v = v.
+    \end{equation} Se $v \in \ker p(T)q(T)$, então \begin{equation}
+        q(T)a(T)p(T)v = a(T)q(T)p(T)v = a(T)p(T)q(T)v = 0 \quad \text{e} \quad p(T)b(T)q(T)v = b(T)p(T)q(T)v = 0,
+    \end{equation} assim $v$ se decompõe em uma soma de um elemento em $\ker q(T)$ e outro em $\ker p(T)$. Por outro lado, se $v \in \ker p(T) + \ker q(T)$, então escrevemos $v = u + w$ com $p(T)u = 0$ e $q(T)w = 0$ e temos \begin{equation}
+        p(T)q(T)v = p(T)q(T)(u + w) = p(T)q(T)u = q(T)p(T)u = 0,
+    \end{equation} assim $v \in \ker p(T)q(T)$.
+
+    Por fim, provamos que a soma é direta. Se $u \in \ker p(T)$ e $w \in \ker q(T)$ são tais que $u + w = 0$, então $u = -w$ e \begin{equation}
+        a(A)p(A)u + b(A)q(A)w = u \implies u = 0 \implies w = 0
+    \end{equation} e o resultado segue.
+\end{proof}
+
+\begin{lemma}
+    Sejam $p_1, \dots, p_k$ polinômios com coeficientes complexos tais que $p_i$ e $p_j$ não tem raíz em comum para todo $i$ e $j$. Então, se $T \colon V \to V$ é um operador em um espaço complexo $V$, temos \begin{equation}
+        \ker p_1(T) \cdots p_k(T) = \ker p_1(T) \oplus \cdots \oplus \ker p_k(T).
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    Seguimos por indução em $k$. Se $k = 2$, o resultado está provado. Assumindo que o resultado vale para $k$, provemos para $k + 1$. Isso porém, segue do caso $k = 2$, afinal, \begin{align}
+        \ker p_1(T) \cdots p_k(T) p_{k+1}(T) &= \ker p_1(T) \cdots p_k(T) \oplus \ker p_{k+1}(T) \\ &= \ker p_1(T) \oplus \cdots \ker p_k(T) \oplus \ker p_{k + 1}(T).
+    \end{align}
+\end{proof}
+
+Temos, finalmente, o Teorema Espectral.
+
+\begin{theorem}
+    Se $T \colon V \to V$ é um operador em um espaço complexo, então todo vetor de $v$ pode ser escrito como uma soma de autovetores de $T$, sejam eles generalizados ou não.
+\end{theorem}
+\begin{proof}
+    Se $v = 0$, então dado $u$ autovetor de $T$ temos $v = u - u$ e não há nada mais a provar. Se $v \neq 0$ então os vetores $v, Tv, \dots, T^nv$ (com $n = \dim V$) são linearmente dependentes, portanto existe uma combinação linear nula deles, que se escreve como um polinômio em $T$ agindo em $v$: $p(T)v = 0$. Prosseguimos fatorando $p$ \begin{equation}
+        (T - r_1\Id)^{m_1} \cdots (T - r_k\Id)^{m_k}v = 0.
+    \end{equation} Como polinômios em $T$ comutam, podemmos remover todos os fatores invertíveis desse produto e assumir que todo $r_i$ é autovalor de $T$ (seja generalizado ou não). Denotando $p_i(t) = (t - r_i)^{m_i}$ temos que $p_1(T) \cdots p_k(T)v = 0$, ou seja, $v \in \ker p_1(T) \cdots p_k(T)$, portanto $v$ se decompõe unicamente em uma soma de elementos de $\ker p_1(T), \dots, \ker p_k(T)$. Porém, $w \in \ker p_i(T)$ se, e somente se, $w$ é autovetor (possivelmente generalizado) de $T$, encerrando assim a prova.
+\end{proof}
+
+O teorema não vale para operadores em espaços reais já que podem não existir autovetores, nem generalizados.
+
+\subsubsection*{Teoria Espectral em Espaços Euclidianos}
+
+A partir de agora $V$ é um espaço Euclidiano complexo, a menos que o contrário seja dito. Vamos relembrar um resultado sobre formas quadráticas: \begin{theorem}
+    Se $A$ é uma forma sesquilinear e Hermitiana (isso é, linear na primeira coordenada e tal que $A(v,u) = \overline{A(u,v)}$), então existe uma base tal que sua forma quadrática, nas coordenadas dessa base, se escreve como \begin{equation}
+        Q(v) = \xi^1 |v_1|^2 + \cdots + \xi^n |v_n|^2
+    \end{equation} com $\xi^1, \dots, \xi^n \in \mathbb{R}$.
+\end{theorem}
+
+Em particular, se $H$ é uma matriz Hermitiana ($H = H^*$, onde $H^*$ é a transposta conjugada), então a forma bilinear $A(u,v) = u^* H v$ é Hermitiana e portanto existe uma base em que $A$ está na forma canônica. Como a mudança de base é dada, na matriz, por $M^*HM$, então temos a primeira forma do Teorema Espectral para Espaços Euclidianos.
+
+\begin{theorem}
+    Se $H$ é Hermitiana, então existe uma matriz $M$ invertível tal que $M^*HM$ é diagonal.
+\end{theorem}
+
+Isso não implica, a priori, que $H$ é diagonalizável, já que pra isso precisaríamos de $M^* = M^{-1}$, e portanto que a base que da a forma canônica de $A$ fosse ortonormal. Será que isso é possível de conseguir?
+
+\begin{theorem}
+    Um mapa $H \colon V \to V$ auto-adjunto (isso é, tal que $H = H^*$) possui todos os autovalores reais e uma base ortonormal da autovetores.
+\end{theorem}
+\begin{proof}
+    Sabemos, pelo Teorema Espectral, que todo vetor de $V$ se escreve como soma de autovetores (possivelmente generalizados) de $H$. Basta mostrarmmos que todos esses autovetores são genuínos (não generalizados), que seus autovalores são reais e que autovetores com autovalores diferentes são ortogonais.
+
+    Note que não precisamos tratar de autovalores generalizados, afinal, se $(H - \lambda\Id)^mv = 0$, então $\lambda$ é autovalor genuíno de $H$ com autovetor $(H - a\Id)^{m-1}v$. Se $a + ib$ é um autovalor de $H$ então existe $v \neq 0$ tal que $Hv  = (a+ib)v$ e assim $(H - a\Id)v = ibv$, portanto $ib$ é autovalor de $H - a\Id$, que também é auto-adjunto. Porém, isso significa que \begin{equation}
+        \langle (H - a\Id)v, v \rangle = \langle ibv, v \rangle = ib\langle v, v \rangle.
+    \end{equation} Da definição de produto interno, sabemos que $ib \langle v, v \rangle$ é imaginário puro, mas como $H - a\Id$ é auto-adjunto, $\langle (H - a\Id)v, v \rangle$ é real, o que é uma contradição a menos que $b = 0$, portanto $H$ só possui autovalores reais.
+
+    Seja $v$ um autovetor generalizado, ou seja, existem $\lambda \in \mathbb{R}$ e $m \in \mathbb{Z}_{>1}$ com $(H - a\Id)^mv = 0$. Proseguimos por indução em $m$. Se $m = 2$, então \begin{equation}
+        (H - a\Id)^2v = 0 \implies 0 = \langle (H - a\Id)^2v, v \rangle = \langle (H - a\Id)v, (H - a\Id)v\rangle,
+    \end{equation} portanto $(H - a\Id)v = 0$ e $v$ é autovetor genuíno de $H$. Agora, supondo que vale o resultado para $m$, provemos para $m+1$. Se $(H - a\Id)^{m+1}v = 0$, então \begin{equation}
+        (H - a\Id)^2(H - a\Id)^{m-1}v = 0,
+    \end{equation} portanto pelo caso anterior temos $(H - a\Id)^mv = 0$, assim $(H - a\Id)v = 0$ pela hipótese de indução.
+
+    Por fim, resta a ortonormalidade. Se $\lambda \neq \eta$ são autovalores de $H$ com autovetores $u$ e $v$, respectivamente, então \begin{equation}
+        \lambda\langle u, v \rangle = \langle \lambda u, v \rangle = \langle Hu, v \rangle = \langle u, Hv \rangle = \langle u, \eta v \rangle = \eta \langle u, v \rangle
+    \end{equation} e, como $\lambda \neq \eta$, obrigatoriamente temos $\langle u, v \rangle = 0$. Dessa forma, basta tomar autovetores de norma $1$ e conseguimos a base desejada.
+\end{proof}
+
+\begin{corollary}
+    Toda matriz Hermitiana é diagonalizável para uma matriz real.
+\end{corollary}
+\begin{proof}
+    Seja $H$ uma matriz Hermitiana. O mapa $x \mapsto Hx$ é linear e auto-adjunto, então possui base ortonormal de autovetores. A matriz $M$ de mudança dessa base para a base canônica é ortonormal, portanto $M^* = M^{-1}$. Mais ainda, a matriz $M^{-1}HM$ é a matriz do mapa $x \mapsto Hx$ correspondente a uma base de autovetores, e portanto é diagonal. Além disso, os elementos da diagonal são os autovalores de $H$, que são reais.
+\end{proof}
+
+O último objetivo é apresentar a versão mais geral do Teorema Espectral para Espaços Euclidianos. Uma \textbf{resolução da identidade} é uma coleção $P_1, \dots, P_k$ de mapas tais que cada $P_i$ é uma projeção auto-adjunta, \begin{equation}
+    \Id = \sum_{i = 1}^k P_i \quad \text{e} \quad  P_iP_j = 0, \text{ se } i \neq j.
+\end{equation} Se, além disso, para algum mapa linear $H \colon V \to V$ temos uma combinação linear \begin{equation}
+    H = \sum_{i = 1}^k a^i P_i
+\end{equation} então a coleção dos mapas $P_i$ são uma \textbf{resolução espectral} de $H$. Perceba que, se $H$ for auto-adjunto, podemos pegar cada $P_i$ como as projeções nos autoespaços e cada $a^i$ como o autovalor correspondente.
+
+\begin{lemma}
+    Se $H$ possui uma resolução espectral, possui base ortonormal de autovetores.
+\end{lemma}
+\begin{proof}
+    Considere uma resolução de $H$ \begin{equation}
+        H = \sum_{i = 1}^k a^i P_i.
+    \end{equation} Então, dado $x \in V$, denotando $x_i = P_ix$ temos $Hx_i = a^ix_i$ pois $P_jP_ix = 0$, assim $\im P_i$ é autoespaço de $H$ com autovalor $a^i$. Além disso, como \begin{equation}
+        \Id = \sum_{i = 1}^k P_i,
+    \end{equation} então $V = \im P_1 + \cdots + \im P_k$. Mais ainda, a soma é direta pois, se $x_i \in \im P_i$ e $x_1 + \cdots + x_k = 0$, aplicando $P_i$ de ambos os lados temos $x_i = 0$. Por fim, se $v \in \im P_i$ e $u \in \im P_j$, então \begin{equation}
+        \langle v, u \rangle = \langle P_i v, P_j u \rangle = \langle v, P_iP_j u \rangle = \langle v, 0 \rangle = 0,
+    \end{equation} assim podemos construir bases ortonormais em cada $\im P_i$ e juntá-las para obter uma base ortonormal de autovetores para $V$.
+\end{proof}
+
+\begin{theorem}
+    Se $H, K \colon V \to V$ são auto-adjuntos que comutam, então existe uma resolução espectral comum a $H$ e $K$.
+\end{theorem}
+\begin{proof}
+    Sabemos que $H$ possui resolução espectral, pois são auto-adjuntos. Denote-as por \begin{equation}
+        H = \sum_{i = 1}^k a^i P_i
+    \end{equation} Seja $V_i$ um autoespaço de $H$ com autovalor $a^i$. Então, se $v \in V_i$, temos $Hv = a^iv$ e, aplicando $K$ dos dois lados e usando a comutatividade, chegamos em $HKv = a^iKv$, portanto $Kv \in V_i$. Dessa maneira, podemos construir a restrição $K|_{V_i} \colon V_i \to V_i$, que também é auto-adjunta e portanto possui resolução espectral. Juntando as resoluções de $K$ restrito a cada autoespaço de $H$, temos uma resolução comum a $H$ e $K$.
+\end{proof}
+
+Um mapa $H \colon V \to V$ é \textbf{anti-auto-adjunto} se $H^* = -H$. Note que nesse caso o mapa $iH$ é auto-adjunto e portanto seus autovalores são reais e existe base ortonormal de autovetores de $iH$, da onde segue o teorema a seguir.
+
+\begin{theorem}
+    Se $H$ é anti-auto-adjunto, seus autovalores são imaginários puros e existe base ortonormal de $V$ formada por autovetores de $H$.
+\end{theorem}
+
+Termminamos o conteúdo de álgebra linear com a última versão do Teorema Espectral para Espaços Euclidianos, que depende da noção de normalidade. Dizemos que $N \colon V \to V$ é \textbf{normal} se $NN^* = N^*N$. Perceba que todo auto-adjunto é normal.
+
+\begin{theorem}
+    Todo mapa normal possui base ortonormal de autovetores.
+\end{theorem}
+\begin{proof}
+    Definimos \begin{equation}
+        H = \frac{N + N^*}{2} \quad \text{e} \quad A = \frac{N - N^*}{2}.
+    \end{equation} Fica claro que $H$ é auto-adjunto e $A$ é anti-auto-adjunto. Mais ainda, $H$ e $K = iA$ comutam e $K$ é auto-adjunto, portanto existe uma resolução espectral comum a $H$ e $K$, então como $N = H - iK$, essa mesma resolução espectral também é resolução de $N$ e assim o resultado está provado.
+\end{proof}
+
+\subsection{Referências}
+\begin{itemize}
+    \item Peter Lax - Linear Algebra and Its Applications - Seções $1.1$, $1.2$, $1.3$ e $1.4$;
+    \item Israel Gelfand - Lectures on Linear Algebra - Seção $1.3$;
+    \item Ernest Borisovich Vinberg - A Course in Algebra - Seção $1.4$.
+\end{itemize}
